@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* vscode-css-languageserver-ignore */
+@theme {
+  --color-background: #020617;
+  --color-foreground: #f8fafc;
+  --color-accent: #3b82f6;
+}
