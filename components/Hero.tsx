@@ -1,146 +1,129 @@
 "use client";
-import React, { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+
+import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
-  const container = useRef<HTMLDivElement>(null);
-  const bgTextRef = useRef<HTMLDivElement>(null);
+  const words = ["DIGITAL", "IMPACT.", "RESULTS."];
+  const wordRef = useRef<HTMLSpanElement>(null);
+  const indexRef = useRef(0);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-
-    // 1. Initial Setup
-    gsap.set(".word-mask", { y: "110%" });
-    gsap.set(".char-3d", { opacity: 0, scale: 1.5, filter: "blur(15px)", y: 50 });
-
-    // 2. The "Explosion" Reveal
-    tl.to(".char-3d", {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      filter: "blur(0px)",
-      duration: 1.8,
-      stagger: { each: 0.04, from: "start" },
-      ease: "expo.inOut"
-    })
-    .to(".word-mask", {
-      y: "0%",
-      duration: 1,
-      stagger: 0.1
-    }, "-=1.2");
-
-    // 3. Dynamic Interaction (Mouse-Reactive Tracking)
-    const handleMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      const xPercent = (clientX / window.innerWidth - 0.5);
-      const yPercent = (clientY / window.innerHeight - 0.5);
-
-      // Background text moves opposite to create depth
-      gsap.to(bgTextRef.current, {
-        x: -xPercent * 60,
-        y: -yPercent * 60,
-        duration: 1.5,
-        ease: "power2.out"
-      });
-
-      // Character-specific light following
-      gsap.to(".char-3d", {
-        textShadow: `${-xPercent * 25}px ${-yPercent * 25}px 40px rgba(59, 130, 246, 0.4)`,
-        duration: 0.6
-      });
-    };
-
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
-  }, { scope: container });
-
-  const renderText = (text: string) => {
-    return text.split("").map((char, i) => (
-      <span key={i} className="char-3d inline-block will-change-transform tracking-[-0.05em]">
-        {char === " " ? "\u00A0" : char}
-      </span>
-    ));
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      indexRef.current = (indexRef.current + 1) % words.length;
+      if (wordRef.current) {
+        wordRef.current.style.opacity = "0";
+        wordRef.current.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          if (wordRef.current) {
+            wordRef.current.textContent = words[indexRef.current];
+            wordRef.current.style.opacity = "1";
+            wordRef.current.style.transform = "translateY(0)";
+          }
+        }, 300);
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section ref={container} className="relative min-h-[100dvh] w-full flex flex-col justify-center items-center bg-[#000] overflow-hidden pt-20">
-      
-      {/* BACKGROUND LAYER: Ghost Text */}
-      <div 
-        ref={bgTextRef}
-        className="absolute inset-0 flex items-center justify-center opacity-[0.04] select-none pointer-events-none"
-      >
-        <h1 className="text-[35vw] font-black leading-none text-white whitespace-nowrap italic">
-          2026_CORE
-        </h1>
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background">
+
+      {/* Background Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-[100px]" />
       </div>
 
-      {/* MAIN CONTENT LAYER */}
-      <div className="relative z-10 w-full px-6 sm:px-12 md:px-24 lg:px-32">
-        
-        {/* FIRST LINE */}
-        <div className="flex flex-col items-start overflow-visible">
-          <h1 className="text-[18vw] md:text-[14vw] lg:text-[12rem] font-[1000] leading-[0.75] text-white uppercase italic">
-            {renderText("CREATING")}
+      {/* Content */}
+      <div className="relative z-10 w-full px-6 md:px-12 pt-32 pb-24">
+
+        {/* Status Badge */}
+        <div className="flex items-center gap-2 mb-10">
+          <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <span className="text-muted text-xs tracking-[0.3em] uppercase">
+            Available for Projects
+          </span>
+        </div>
+
+        {/* Heading */}
+        <div className="mb-8">
+          <h1 className="text-[clamp(3.5rem,11vw,10rem)] font-black leading-[0.9] tracking-tighter uppercase">
+            <span className="text-foreground block">CREATING</span>
+            <span
+              ref={wordRef}
+              className="block"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #2563EB, #06B6D4)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                transition: "opacity 0.3s ease, transform 0.3s ease",
+                opacity: 1,
+              }}
+            >
+              DIGITAL
+            </span>
           </h1>
         </div>
 
-        {/* SECOND LINE: Liquid Gradient */}
-        <div className="flex flex-col items-end overflow-visible mt-2 md:mt-4">
-          <h1 
-            className="text-[18vw] md:text-[14vw] lg:text-[12rem] font-[1000] leading-[0.75] uppercase italic"
-            style={{
-              WebkitTextFillColor: "transparent",
-              WebkitBackgroundClip: "text",
-              backgroundImage: "linear-gradient(to right, #ffffff 10%, #3b82f6 50%, #ffffff 90%)",
-              backgroundSize: "200% auto",
-              animation: "gradient-move 6s linear infinite"
-            }}
+        {/* Subheading */}
+        <p className="text-muted text-base md:text-lg max-w-lg mb-10 leading-relaxed">
+          Senior Web Developer crafting high-performance websites for{" "}
+          <span className="text-foreground font-medium">UK & Middle East</span>{" "}
+          clients. React, Next.js, WordPress & SEO.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap items-center gap-4 mb-20">
+          <Link
+            href="/contact"
+            className="bg-primary hover:bg-primary-hover text-white text-xs px-7 py-3.5 tracking-widest uppercase transition-colors duration-200 font-medium"
           >
-            {renderText("IMPACT.")}
-          </h1>
+            Build Brief
+          </Link>
+          <Link
+            href="/work"
+            className="border border-border-light hover:border-primary text-muted hover:text-foreground text-xs px-7 py-3.5 tracking-widest uppercase transition-all duration-200"
+          >
+            View Work
+          </Link>
         </div>
 
-        {/* BOTTOM SECTION */}
-        <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-8 items-end w-full">
-          <div className="md:col-span-8">
-            <div className="overflow-hidden">
-              <div className="word-mask">
-                <p className="text-zinc-500 text-lg md:text-2xl font-light tracking-tight max-w-2xl leading-snug">
-                  Architecting <span className="text-white italic">unconventional digital systems</span> that transcend modern web standards.
-                </p>
-              </div>
+        {/* Stats */}
+        <div className="flex flex-wrap gap-12 md:gap-16">
+          {[
+            { number: "6+", label: "Years Experience" },
+            { number: "30+", label: "Projects Delivered" },
+            { number: "3", label: "Markets Served" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col gap-1">
+              <span className="text-4xl md:text-5xl font-black text-foreground leading-none">
+                {stat.number}
+              </span>
+              <span className="text-muted text-[10px] tracking-[0.25em] uppercase">
+                {stat.label}
+              </span>
             </div>
-            
-            <div className="overflow-hidden mt-8">
-              <div className="word-mask">
-                <button className="relative px-10 py-4 bg-white text-black font-black uppercase tracking-[0.2em] text-[10px] overflow-hidden group">
-                  <span className="relative z-10 group-hover:text-white transition-colors duration-500">Launch Prototype</span>
-                  <div className="absolute inset-0 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* SYSTEM INFO (Hidden on very small screens) */}
-          <div className="md:col-span-4 hidden sm:flex flex-col items-end opacity-30">
-            <div className="text-right font-mono text-[9px] text-blue-400 space-y-1 tracking-widest uppercase">
-              <p>LOC: Karachi_Hub</p>
-              <p>STATUS: ACTIVE</p>
-              <p>V: 3.0.1_STABLE</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* CUSTOM ANIMATIONS */}
-      <style jsx>{`
-        @keyframes gradient-move {
-          0% { background-position: 0% center; }
-          100% { background-position: 200% center; }
-        }
-      `}</style>
+      {/* Bottom Bar */}
+      <div className="absolute bottom-6 left-0 right-0 px-6 md:px-12">
+        <div className="flex justify-between items-center">
+          <span className="text-muted/50 text-[10px] tracking-widest uppercase">
+            LOC: KARACHI, PK
+          </span>
+          <span className="text-muted/50 text-[10px] tracking-widest uppercase">
+            STATUS: <span className="text-accent">ACTIVE</span>
+          </span>
+          <span className="text-muted/50 text-[10px] tracking-widest uppercase hidden md:block">
+            EST. 2018
+          </span>
+        </div>
+      </div>
+
     </section>
   );
 }

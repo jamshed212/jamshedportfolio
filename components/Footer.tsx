@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+
+import Link from "next/link";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -7,34 +8,51 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black py-12 border-t border-white/5">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          
-          {/* Brand/Name Part */}
-          <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-white font-bold tracking-tighter text-xl uppercase">
-              Jamshed <span className="text-blue-600">Khan.</span>
-            </h4>
-            <p className="text-gray-600 font-mono text-[10px] uppercase tracking-widest mt-1">
-              Building Digital Excellence
-            </p>
-          </div>
-
-          {/* Navigation / Back to top */}
-          <div className="flex flex-col items-center md:items-end">
-            <button 
-              onClick={scrollToTop}
-              className="text-gray-500 hover:text-white font-mono text-[10px] uppercase tracking-[0.5em] transition-all group"
-            >
-              [ Back to Top <span className="inline-block group-hover:-translate-y-1 transition-transform">↑</span> ]
-            </button>
-            <p className="text-gray-800 font-mono text-[9px] mt-4 uppercase">
-              Karachi, Pakistan — 2026
-            </p>
-          </div>
-
+    <footer className="bg-background py-8 px-6 md:px-12 border-t border-white/10 text-slate-500 text-xs font-medium">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* Left: Brand / Designation */}
+        <div className="flex items-center gap-3">
+          <span className="text-white font-black tracking-widest text-sm uppercase">
+            JAMSHED
+          </span>
+          <span className="text-slate-600">|</span>
+          <span className="text-slate-400 uppercase tracking-wider text-[11px]">
+            WEB DEVELOPER
+          </span>
         </div>
+
+        {/* Center: Copyright */}
+        <div className="text-center text-slate-500 tracking-wider">
+          © {new Date().getFullYear()} JAMSHED KHAN. ALL RIGHTS RESERVED.
+        </div>
+
+        {/* Right: Quick Links / Back to Top */}
+        <div className="flex items-center gap-6">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cyan-400 transition-colors uppercase tracking-wider text-[11px]"
+          >
+            LINKEDIN
+          </a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cyan-400 transition-colors uppercase tracking-wider text-[11px]"
+          >
+            GITHUB
+          </a>
+          <button
+            onClick={scrollToTop}
+            className="text-cyan-400 hover:text-cyan-300 transition-colors uppercase tracking-wider font-bold text-[11px] flex items-center gap-1 ml-2"
+          >
+            TOP ↑
+          </button>
+        </div>
+
       </div>
     </footer>
   );

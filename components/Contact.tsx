@@ -1,104 +1,129 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
 
 export default function Contact() {
-  const email = "jamshed0930@gmail.com";
-  const linkedInUrl = "https://linkedin.com/in/jamshed-khan-a2a083196";
-  const whatsappUrl = "https://wa.me/923172059998";
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(email);
-    alert("Email copied to clipboard!");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
   };
 
   return (
-    <section className="bg-black py-32 relative overflow-hidden border-t border-white/5">
-      {/* Glow Effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="bg-background py-24 md:py-32 px-6 md:px-12 border-t border-white/5" id="contact">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-16">
+          <span className="text-cyan-400 text-[10px] tracking-[0.3em] uppercase font-bold mb-3 block">
+            GET IN TOUCH
+          </span>
+          <h2 className="text-white text-4xl md:text-5xl font-black tracking-tighter uppercase">
+            LET'S WORK
+          </h2>
+        </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-          
-          {/* Left Side: Text & Info */}
-          <div>
-            <h2 className="text-blue-500 font-mono text-xs tracking-[1em] uppercase mb-8">
-              // CONTACT_US
-            </h2>
-            <h3 className="text-white text-6xl md:text-8xl font-black uppercase italic tracking-tighter leading-[0.85] mb-12">
-              Let's <br /> 
-              <span className="text-blue-600">Collaborate.</span>
-            </h3>
-            
-            <div className="space-y-10 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start border-t border-white/10 pt-12">
+          {/* Left Info Column */}
+          <div className="md:col-span-5 space-y-8">
+            <p className="text-slate-400 text-sm md:text-base leading-relaxed">
+              Available for freelance projects and full-time opportunities. Specializing in high-performance web development for <span className="text-white font-semibold">UK & Middle East</span> clients.
+            </p>
+
+            <div className="space-y-6 pt-2">
               <div>
-                <p className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.5em] mb-4">Direct Mail</p>
-                <button 
-                  onClick={copyToClipboard}
-                  className="text-white text-xl md:text-2xl font-bold hover:text-blue-500 transition-colors"
+                <span className="text-slate-500 text-[10px] tracking-[0.2em] uppercase font-bold block mb-1">
+                  EMAIL
+                </span>
+                <a
+                  href="mailto:contact@jamshed.dev"
+                  className="text-white text-base md:text-lg font-bold hover:text-cyan-400 transition-colors"
                 >
-                  {email}
-                </button>
+                  contact@jamshed.dev
+                </a>
               </div>
 
               <div>
-                <p className="text-gray-500 font-mono text-[10px] uppercase tracking-[0.5em] mb-4">Socials</p>
-                <div className="flex gap-6 mt-2">
-                  <a href={linkedInUrl} target="_blank" className="text-white/60 hover:text-blue-500 font-mono text-xs tracking-widest uppercase">[ LinkedIn ]</a>
-                  <a href={whatsappUrl} target="_blank" className="text-white/60 hover:text-blue-500 font-mono text-xs tracking-widest uppercase">[ WhatsApp ]</a>
-                </div>
+                <span className="text-slate-500 text-[10px] tracking-[0.2em] uppercase font-bold block mb-1">
+                  LOCATION
+                </span>
+                <p className="text-slate-300 text-sm font-medium">
+                  Karachi, Pakistan
+                </p>
+              </div>
+
+              <div>
+                <span className="text-slate-500 text-[10px] tracking-[0.2em] uppercase font-bold block mb-1">
+                  AVAILABILITY
+                </span>
+                <p className="text-cyan-400 text-sm font-semibold uppercase flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  Open to Projects
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Contact Form */}
-          <div className="bg-white/[0.03] border border-white/10 p-8 md:p-12 rounded-3xl backdrop-blur-sm">
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-gray-500 font-mono text-[10px] uppercase tracking-widest ml-1">Name</label>
-                  <input 
-                    type="text" 
-                    placeholder="John Doe"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/10 focus:outline-none focus:border-blue-600 transition-all"
+          {/* Right Form Column */}
+          <div className="md:col-span-7">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <input
+                    type="text"
+                    placeholder="NAME"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
                   />
                 </div>
-                <div className="space-y-2">
-                  <label className="text-gray-500 font-mono text-[10px] uppercase tracking-widest ml-1">Email</label>
-                  <input 
-                    type="email" 
-                    placeholder="john@example.com"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/10 focus:outline-none focus:border-blue-600 transition-all"
+                <div>
+                  <input
+                    type="email"
+                    placeholder="EMAIL"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-gray-500 font-mono text-[10px] uppercase tracking-widest ml-1">Subject</label>
-                <input 
-                  type="text" 
-                  placeholder="Project Inquiry"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/10 focus:outline-none focus:border-blue-600 transition-all"
+              <div>
+                <input
+                  type="text"
+                  placeholder="PROJECT TYPE / BUDGET"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-gray-500 font-mono text-[10px] uppercase tracking-widest ml-1">Message</label>
-                <textarea 
-                  rows={4}
-                  placeholder="Tell me about your project..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/10 focus:outline-none focus:border-blue-600 transition-all resize-none"
+              <div>
+                <textarea
+                  rows={5}
+                  placeholder="MESSAGE"
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors resize-none"
                 />
               </div>
 
-              <button 
+              <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs uppercase tracking-[0.3em] py-4 rounded-xl transition-all duration-300 mt-4 active:scale-[0.98]"
+                className="bg-cyan-400 hover:bg-cyan-300 text-black font-bold text-xs md:text-sm px-8 py-4 tracking-[0.2em] uppercase transition-all duration-200 rounded-sm shadow-lg shadow-cyan-400/20"
               >
-                Send Message
+                SEND MESSAGE
               </button>
             </form>
           </div>
-
         </div>
       </div>
     </section>
