@@ -2,17 +2,32 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { projectsData } from "@/data/projects";
+import { PROJECTS_DATA as projectsData } from "@/data/projects";
+
+// Type definition to satisfy TypeScript build
+interface Project {
+  id: string | number;
+  subtitle: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  metrics: string;
+  link: string;
+}
 
 const categories = ["ALL", "NEXT.JS / REACT", "WORDPRESS", "CUSTOM FRONTEND"];
 
 export default function WorkGrid() {
   const [activeTab, setActiveTab] = useState("ALL");
 
+  // Typecast to ensure TypeScript treats it as an array
+  const projectsList = (projectsData as unknown) as Project[];
+
   const filteredProjects =
     activeTab === "ALL"
-      ? projectsData
-      : projectsData.filter((project) => project.category === activeTab);
+      ? projectsList
+      : projectsList.filter((project: Project) => project.category === activeTab);
 
   return (
     <div>
@@ -35,7 +50,7 @@ export default function WorkGrid() {
 
       {/* Projects List */}
       <div className="space-y-8">
-        {filteredProjects.map((project) => (
+        {filteredProjects.map((project: Project) => (
           <div
             key={project.id}
             className="bg-white/[0.02] border border-white/10 rounded-sm p-8 md:p-10 hover:border-cyan-400/50 transition-all duration-300 group"
