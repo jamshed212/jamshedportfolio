@@ -17,30 +17,68 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Jamshed Khan | Senior Web Developer & Mobile App Specialist",
+  metadataBase: new URL("https://jamshedportfolio.vercel.app"),
+
+  title: {
+    default: "Jamshed Khan | Full Stack Developer",
+    template: "%s | Jamshed Khan",
+  },
+
   description:
-    "Senior Web & Mobile App Developer specializing in React, Next.js, React Native, WordPress & SEO — based in Karachi, serving global clients.",
+    "Jamshed Khan is a Full Stack Developer specializing in React, Next.js, WordPress, Shopify, API integrations, SaaS solutions, and AI automation for global clients.",
+
   keywords: [
     "Jamshed Khan",
     "Jamshed Khan Developer",
-    "Senior Web Developer Karachi",
+    "Full Stack Developer",
+    "Full Stack Developer Pakistan",
+    "React Developer",
     "Next.js Developer",
-    "React Native Developer",
-    "WordPress SEO Expert Pakistan",
+    "WordPress Developer",
+    "Shopify Developer",
+    "API Integration Developer",
+    "AI Automation Developer",
+    "Web Developer Karachi",
   ],
-  authors: [{ name: "Jamshed Khan" }],
+
+  authors: [
+    {
+      name: "Jamshed Khan",
+      url: "https://jamshedportfolio.vercel.app",
+    },
+  ],
+
+  creator: "Jamshed Khan",
+  publisher: "Jamshed Khan",
+
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
+
   verification: {
     google: "_Obmd9Mw5qSobM9xzh-oeLi8pinhXAxzKOSlwT9zJO0",
   },
+
   openGraph: {
-    title: "Jamshed Khan | Senior Web Developer",
-    description: "Senior Web & Mobile App Developer — React, Next.js, WordPress & SEO",
     type: "website",
     locale: "en_US",
+    url: "https://jamshedportfolio.vercel.app",
+    siteName: "Jamshed Khan",
+    title: "Jamshed Khan | Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, API integrations, SaaS solutions, and AI automation.",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Jamshed Khan | Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS & AI automation.",
   },
 };
 
@@ -49,20 +87,61 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
+  const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Jamshed Khan",
-    "jobTitle": "Senior Web & Mobile Application Developer",
-    "address": {
+
+    name: "Jamshed Khan",
+
+    url: "https://jamshedportfolio.vercel.app",
+
+    jobTitle: "Full Stack Developer",
+
+    description:
+      "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, API integrations, SaaS solutions, and AI automation.",
+
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Karachi",
-      "addressCountry": "PK",
+      addressLocality: "Karachi",
+      addressCountry: "PK",
     },
-    "sameAs": [
-      "https://github.com/your-github-username",
-      "https://www.linkedin.com/in/your-linkedin-username",
+
+    sameAs: [
+      "https://github.com/jamshed212",
+      "https://www.linkedin.com/in/jamshed0khan",
+      "https://x.com/jamshedkhan2010",
     ],
+
+    knowsAbout: [
+      "Full Stack Development",
+      "React",
+      "Next.js",
+      "JavaScript",
+      "TypeScript",
+      "WordPress",
+      "Shopify",
+      "API Integration",
+      "SaaS Development",
+      "AI Automation",
+      "Web Development",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+
+    name: "Jamshed Khan",
+    url: "https://jamshedportfolio.vercel.app",
+
+    description:
+      "Official portfolio website of Jamshed Khan, a Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS, AI automation, performance, and technical SEO.",
+
+    author: {
+      "@type": "Person",
+      name: "Jamshed Khan",
+      url: "https://jamshedportfolio.vercel.app",
+    },
   };
 
   return (
@@ -73,10 +152,15 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personSchema, websiteSchema]),
+          }}
         />
+
         <Navbar />
+
         <main className="flex-grow">{children}</main>
+
         <Footer />
       </body>
     </html>

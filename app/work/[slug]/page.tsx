@@ -1,12 +1,45 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PROJECTS_DATA } from "@/data/projects";
 
-export default async function CaseStudyPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = PROJECTS_DATA[slug];
+
+  if (!project) {
+    return {
+      title: "Case Study Not Found",
+      description: "The requested project case study could not be found.",
+    };
+  }
+
+  return {
+    title: `${project.title} Case Study`,
+    description: project.overview,
+    alternates: {
+      canonical: `/work/${slug}`,
+    },
+    openGraph: {
+      title: `${project.title} Case Study | Jamshed Khan`,
+      description: project.overview,
+      url: `/work/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      title: `${project.title} Case Study | Jamshed Khan`,
+      description: project.overview,
+    },
+  };
+}
+
+export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
   const project = PROJECTS_DATA[slug];
 
@@ -30,8 +63,11 @@ export default async function CaseStudyPage({
               [{project.category}]
             </span>
             <span className="text-muted">|</span>
-            <span className="text-muted uppercase">TIMELINE: {project.timeline}</span>
+            <span className="text-muted uppercase">
+              TIMELINE: {project.timeline}
+            </span>
           </div>
+
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-foreground">
             {project.title}
           </h1>
@@ -49,12 +85,21 @@ export default async function CaseStudyPage({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-border/40 pb-8">
             <div className="space-y-2">
-              <span className="text-muted text-xs block uppercase">THE CHALLENGE / PROBLEM:</span>
-              <p className="text-foreground leading-relaxed">{project.problem}</p>
+              <span className="text-muted text-xs block uppercase">
+                THE CHALLENGE / PROBLEM:
+              </span>
+              <p className="text-foreground leading-relaxed">
+                {project.problem}
+              </p>
             </div>
+
             <div className="space-y-2">
-              <span className="text-muted text-xs block uppercase">THE ARCHITECTURAL SOLUTION:</span>
-              <p className="text-foreground leading-relaxed">{project.solution}</p>
+              <span className="text-muted text-xs block uppercase">
+                THE ARCHITECTURAL SOLUTION:
+              </span>
+              <p className="text-foreground leading-relaxed">
+                {project.solution}
+              </p>
             </div>
           </div>
 
@@ -63,9 +108,13 @@ export default async function CaseStudyPage({
               <span className="text-accent text-xs tracking-widest uppercase font-bold block">
                 // 02. TECHNICAL HIGHLIGHTS
               </span>
+
               <ul className="space-y-2">
                 {project.architectureHighlights.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-foreground/90">
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 text-xs text-foreground/90"
+                  >
                     <span className="text-accent">■</span>
                     <span>{item}</span>
                   </li>
@@ -77,9 +126,13 @@ export default async function CaseStudyPage({
               <span className="text-accent text-xs tracking-widest uppercase font-bold block">
                 // 03. KEY FEATURES DELIVERED
               </span>
+
               <ul className="space-y-2">
                 {project.keyFeatures.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-foreground/90">
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2 text-xs text-foreground/90"
+                  >
                     <span className="text-primary">✓</span>
                     <span>{feat}</span>
                   </li>
@@ -90,7 +143,10 @@ export default async function CaseStudyPage({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
             <div className="space-y-3">
-              <span className="text-muted text-xs block uppercase">VERIFIED METRICS & RESULTS:</span>
+              <span className="text-muted text-xs block uppercase">
+                VERIFIED METRICS & RESULTS:
+              </span>
+
               <div className="flex flex-wrap gap-2">
                 {project.metrics.map((m, i) => (
                   <span
@@ -104,7 +160,10 @@ export default async function CaseStudyPage({
             </div>
 
             <div className="space-y-3">
-              <span className="text-muted text-xs block uppercase">ENGINEERING STACK:</span>
+              <span className="text-muted text-xs block uppercase">
+                ENGINEERING STACK:
+              </span>
+
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((t, i) => (
                   <span

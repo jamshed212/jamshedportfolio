@@ -1,6 +1,14 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Jamshed Khan | Full Stack Developer",
+  description:
+    "Learn about Jamshed Khan, a Full Stack Developer specializing in Next.js, React, WordPress, Shopify, API integrations, technical SEO, performance, and modern web applications.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 interface StatItem {
   label: string;

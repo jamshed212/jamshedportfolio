@@ -1,9 +1,26 @@
+
+
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Jamshed Khan | Senior Web Developer & Technical Engineer",
+export const metadata: Metadata = {
+  title: "Jamshed Khan | Full Stack Developer",
   description:
-    "Building high-performance digital experiences, custom web applications, and WordPress platforms for international businesses.",
+    "Jamshed Khan is a Full Stack Developer specializing in React, Next.js, WordPress, Shopify, API integrations, SaaS solutions, AI automation, performance, and technical SEO.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Jamshed Khan | Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS, AI automation, performance, and technical SEO.",
+    url: "/",
+  },
+  twitter: {
+    title: "Jamshed Khan | Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS, AI automation, performance, and technical SEO.",
+  },
 };
 
 const STATS = [

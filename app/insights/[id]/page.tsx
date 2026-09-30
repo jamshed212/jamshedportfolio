@@ -1,6 +1,4 @@
-"use client";
-
-import { use } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -52,6 +50,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
       },
     ],
   },
+
   "canonical-errors-fix": {
     id: "canonical-errors-fix",
     category: "TECHNICAL SEO",
@@ -76,6 +75,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
       },
     ],
   },
+
   "pagespeed-90-plus-wordpress": {
     id: "pagespeed-90-plus-wordpress",
     category: "PERFORMANCE",
@@ -100,6 +100,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
       },
     ],
   },
+
   "dynamic-jewelry-configurator": {
     id: "dynamic-jewelry-configurator",
     category: "E-COMMERCE / SYSTEMS",
@@ -120,6 +121,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
       },
     ],
   },
+
   "nextjs-app-router-patterns": {
     id: "nextjs-app-router-patterns",
     category: "NEXT.JS",
@@ -140,6 +142,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
       },
     ],
   },
+
   "mobile-slider-performance": {
     id: "mobile-slider-performance",
     category: "MOTION UI",
@@ -160,6 +163,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
       },
     ],
   },
+
   "international-seo-structure": {
     id: "international-seo-structure",
     category: "WORDPRESS / CMS",
@@ -182,13 +186,47 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
   },
 };
 
-export default function ArticleDetailPage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const article = ARTICLES_DATABASE[id];
+
+  if (!article) {
+    return {
+      title: "Insight Not Found",
+      description: "The requested technical insight could not be found.",
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.summary,
+    alternates: {
+      canonical: `/insights/${id}`,
+    },
+    openGraph: {
+      title: `${article.title} | Jamshed Khan`,
+      description: article.summary,
+      url: `/insights/${id}`,
+      type: "article",
+    },
+    twitter: {
+      title: `${article.title} | Jamshed Khan`,
+      description: article.summary,
+    },
+  };
+}
+
+export default async function ArticleDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const resolvedParams = use(params);
-  const article = ARTICLES_DATABASE[resolvedParams.id];
+  const { id } = await params;
+  const article = ARTICLES_DATABASE[id];
 
   if (!article) {
     notFound();
@@ -246,6 +284,7 @@ export default function ArticleDetailPage({
               <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-foreground font-mono">
                 {block.sectionTitle}
               </h2>
+
               <p className="text-muted text-sm md:text-base leading-relaxed">
                 {block.text}
               </p>
@@ -260,12 +299,17 @@ export default function ArticleDetailPage({
           <span className="text-accent text-xs tracking-[0.3em] uppercase font-bold block font-mono">
             ARCHITECTURAL & TECHNICAL CONSULTATION
           </span>
+
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white">
             NEED TECHNICAL DIRECTION?
           </h2>
+
           <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Have a complex technical requirement, performance bottleneck, or platform migration to scope? Let's discuss the underlying architecture.
+            Have a complex technical requirement, performance bottleneck, or
+            platform migration to scope? Let's discuss the underlying
+            architecture.
           </p>
+
           <div className="pt-2 flex justify-center">
             <Link
               href="/build"
@@ -278,4 +322,4 @@ export default function ArticleDetailPage({
       </section>
     </div>
   );
-}   
+}

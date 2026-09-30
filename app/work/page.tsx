@@ -1,5 +1,26 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PROJECTS_DATA } from "@/data/projects";
+
+export const metadata: Metadata = {
+  title: "Selected Work & Case Studies",
+  description:
+    "Explore selected web development projects by Jamshed Khan, including React, Next.js, WordPress, Shopify, e-commerce, API integrations, and custom software solutions.",
+  alternates: {
+    canonical: "/work",
+  },
+  openGraph: {
+    title: "Selected Work & Case Studies | Jamshed Khan",
+    description:
+      "Explore selected web development projects by Jamshed Khan, including React, Next.js, WordPress, Shopify, e-commerce, API integrations, and custom software solutions.",
+    url: "/work",
+  },
+  twitter: {
+    title: "Selected Work & Case Studies | Jamshed Khan",
+    description:
+      "Explore selected web development projects by Jamshed Khan, including React, Next.js, WordPress, Shopify, e-commerce, API integrations, and custom software solutions.",
+  },
+};
 
 export default function WorkListingPage() {
   const projects = Object.values(PROJECTS_DATA);
@@ -10,6 +31,7 @@ export default function WorkListingPage() {
         <span className="text-accent text-xs font-mono tracking-widest uppercase block">
           ENGINEERING ARCHIVE
         </span>
+
         <h1 className="text-4xl md:text-7xl font-black uppercase text-foreground">
           SELECTED WORK
         </h1>
@@ -22,7 +44,10 @@ export default function WorkListingPage() {
             className="bg-surface border border-border p-8 rounded-sm space-y-6 hover:border-primary/50 transition-colors"
           >
             <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
-              <span className="text-accent uppercase">[{project.category}]</span>
+              <span className="text-accent uppercase">
+                [{project.category}]
+              </span>
+
               {project.isPrivate && (
                 <span className="bg-background border border-border text-muted px-2 py-1 text-[10px]">
                   🔒 INTERNAL ENTERPRISE SOFTWARE
