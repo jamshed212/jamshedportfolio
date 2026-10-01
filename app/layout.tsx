@@ -147,15 +147,17 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
-      <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground flex flex-col min-h-screen`}
-        suppressHydrationWarning
-      >
+      <head>
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="ToG7tB4D6t2ufV/t5kzFrA"
           strategy="afterInteractive"
         />
+      </head>
+      <body
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground flex flex-col min-h-screen`}
+        suppressHydrationWarning
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
