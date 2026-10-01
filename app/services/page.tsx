@@ -37,8 +37,7 @@ const SERVICES: Service[] = [
     ],
     techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST / GraphQL APIs", "Vercel"],
     relatedProjects: [
-      { title: "ITS Digital House Platform", href: "/work/its-digital-house" },
-      { title: "Dynamic Product Configurator", href: "/work/xox-jewels" },
+      { title: "ITS Digital House Platform", href: "/work/its-digital-house" }
     ],
   },
   {
@@ -91,8 +90,7 @@ const SERVICES: Service[] = [
     ],
     techStack: ["GSAP", "Framer Motion", "Tailwind CSS", "Fabric.js", "Vanilla JS"],
     relatedProjects: [
-      { title: "ITS Digital House Identity", href: "/work/its-digital-house" },
-      { title: "Interactive Product Configurator", href: "/work/xox-jewels" },
+      { title: "ITS Digital House Identity", href: "/work/its-digital-house" }
     ],
   },
 ];
