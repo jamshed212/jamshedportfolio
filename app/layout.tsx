@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -150,6 +151,11 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground flex flex-col min-h-screen`}
         suppressHydrationWarning
       >
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="ToG7tB4D6t2ufV/t5kzFrA"
+          strategy="afterInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
