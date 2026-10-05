@@ -34,6 +34,10 @@ export default function ContactPage() {
     const data = await response.json();
 
     if (!response.ok) {
+      if (response.status === 429) {
+        throw new Error("TOO MANY REQUESTS — Please try again later.");
+      }
+
       throw new Error(data.error || "Failed to send message");
     }
 
@@ -49,9 +53,14 @@ export default function ContactPage() {
       website: "",
     });
   } catch (error) {
-    console.error("Contact form error:", error);
-    setStatus("error");
+  console.error("Contact form error:", error);
+
+  if (error instanceof Error) {
+    alert(error.message);
   }
+
+  setStatus("error");
+}
   };
 
   return (

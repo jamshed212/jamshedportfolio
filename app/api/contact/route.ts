@@ -1,8 +1,16 @@
 import { Resend } from "resend";
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+import { Redis } from "@upstash/redis";
+import { Ratelimit } from "@upstash/ratelimit";
 
-const RATE_LIMIT = 5;
-const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
+const redis = Redis.fromEnv();
+
+const ratelimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(5, "1 h"),
+  analytics: true,
+  prefix: "portfolio-contact",
+});
+
 const escapeHtml = (value: string = "") =>
   value
     .replace(/&/g, "&amp;")
@@ -20,27 +28,12 @@ export async function POST(req: Request) {
     req.headers.get("x-real-ip") ||
     "unknown";
 
-    const now = Date.now();
-    const record = rateLimitMap.get(ip);
-
-    if (record && now >= record.resetAt) {
-        rateLimitMap.delete(ip);
-    }
-
-    if (record && now < record.resetAt) {
-      if (record.count >= RATE_LIMIT) {
-        return Response.json(
-          { error: "Too many requests. Please try again later." },
-          { status: 429 }
-        );
-      }
-
-      record.count += 1;
-    } else {
-      rateLimitMap.set(ip, {
-        count: 1,
-        resetAt: now + RATE_LIMIT_WINDOW,
-      });
+    const { success } = await ratelimit.limit(ip);
+    if (!success) {
+    return Response.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+    );
     }
     
     const { name, email, projectType, details, budget, timeline, website } = await req.json();
