@@ -64,6 +64,7 @@ export default function BriefBuilder() {
   const [selectedTimeline, setSelectedTimeline] = useState<string>("STANDARD (3-4 WEEKS)");
   const [clientInfo, setClientInfo] = useState({ name: "", email: "", notes: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const toggleFeature = (id: string) => {
     setSelectedFeatures((prev) =>
@@ -79,10 +80,67 @@ export default function BriefBuilder() {
     if (currentStep > 1) setCurrentStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    setIsSubmitting(true);
+    const selectedProject = STEP_1_OPTIONS.find(
+      (option) => option.id === selectedProjectType
+    );
+
+    const selectedFeatureTitles = selectedFeatures
+      .map(
+        (featureId) =>
+          STEP_2_OPTIONS.find((option) => option.id === featureId)?.title
+      )
+      .filter(Boolean);
+
+    const details = `
+    Project Type:
+    ${selectedProject?.title || "Not specified"}
+
+    Technical Requirements:
+    ${
+      selectedFeatureTitles.length > 0
+        ? selectedFeatureTitles.join("\n")
+        : "None selected"
+    }
+
+    Additional Notes:
+    ${clientInfo.notes || "None"}
+        `.trim();
+
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: clientInfo.name,
+            email: clientInfo.email,
+            projectType: selectedProject?.title || "Not specified",
+            details,
+            budget: "",
+            timeline: selectedTimeline,
+          }),
+        });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to send project brief");
+    }
+
+    setIsSubmitting(false);
     setIsSubmitted(true);
-  };
+  } 
+    catch (error) {
+      console.error("Brief submission error:", error);
+      setIsSubmitting(false);
+      alert("Something went wrong. Please try again.");
+    }
+    };
 
   return (
     <div className="bg-white/[0.02] border border-white/10 rounded-sm p-6 md:p-12 relative overflow-hidden">
@@ -329,9 +387,10 @@ export default function BriefBuilder() {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-cyan-400 hover:bg-cyan-300 text-black font-bold text-xs py-4 tracking-[0.2em] uppercase transition-all duration-200 shadow-lg shadow-cyan-400/20"
                 >
-                  SUBMIT BRIEF FOR EVALUATION →
+                  {isSubmitting ? "SENDING BRIEF..." : "SUBMIT BRIEF FOR EVALUATION →"}
                 </button>
               </form>
             </motion.div>

@@ -11,16 +11,47 @@ export default function ContactPage() {
     details: "",
     budget: "",
     timeline: "",
+    website: "",
   });
 
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-    setTimeout(() => {
-      setStatus("success");
-    }, 1000);
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setStatus("submitting");
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to send message");
+    }
+
+    setStatus("success");
+
+    setFormData({
+      name: "",
+      email: "",
+      projectType: "Custom Web Application",
+      details: "",
+      budget: "",
+      timeline: "",
+      website: "",
+    });
+  } catch (error) {
+    console.error("Contact form error:", error);
+    setStatus("error");
+  }
   };
 
   return (
@@ -183,11 +214,22 @@ export default function ContactPage() {
                   THANK YOU FOR REACHING OUT.
                 </h3>
                 <p className="text-muted text-xs max-w-md mx-auto leading-relaxed">
-                  Your message has been logged. I will review the technical details and respond back within 24 hours.
+                  Your message has been received successfully. I will review your project details and get back to you within 24 hours with the next steps.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  value={formData.website}
+                  onChange={(e) =>
+                    setFormData({ ...formData, website: e.target.value })
+                  }
+                />
                 
                 {/* NAME & EMAIL */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -283,7 +325,12 @@ export default function ContactPage() {
                 </div>
 
                 {/* SUBMIT BUTTON */}
-                <button
+                {status === "error" && (
+                  <p className="text-red-400 text-xs font-mono">
+                    MESSAGE NOT SENT — Something went wrong while sending your message. Please try again.
+                  </p>
+                )}
+                <button 
                   type="submit"
                   disabled={status === "submitting"}
                   className="w-full bg-primary hover:bg-primary-hover text-white text-xs font-bold font-mono py-4 tracking-[0.2em] uppercase transition-colors rounded-sm disabled:opacity-50"
