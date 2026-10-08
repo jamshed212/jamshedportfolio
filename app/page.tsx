@@ -15,11 +15,20 @@ export const metadata: Metadata = {
     description:
       "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS, AI automation, performance, and technical SEO.",
     url: "/",
+    images: [
+      {
+        url: "/og-image.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Jamshed Khan | Full Stack Developer",
+      },
+    ],
   },
   twitter: {
     title: "Jamshed Khan | Full Stack Developer",
     description:
       "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS, AI automation, performance, and technical SEO.",
+    images: ["/og-image.jpeg"],
   },
 };
 

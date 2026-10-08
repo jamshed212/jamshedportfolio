@@ -12,11 +12,21 @@ export const metadata: Metadata = {
     description:
       "Full-stack web development, WordPress, e-commerce, technical SEO, performance optimization, UI/UX, API integrations, and modern web engineering.",
     url: "/services",
+    images: [
+      {
+        url: "/og-image.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Jamshed Khan | Web Development & Technical SEO Services",
+      },
+    ],
   },
   twitter: {
+    card: "summary_large_image",
     title: "Web Development & Technical SEO Services | Jamshed Khan",
     description:
       "Full-stack web development, WordPress, e-commerce, technical SEO, performance optimization, UI/UX, and API integrations.",
+    images: ["/og-image.jpeg"],
   },
 };
 

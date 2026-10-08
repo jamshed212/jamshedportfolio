@@ -3,22 +3,32 @@ import Link from "next/link";
 import { PROJECTS_DATA } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Selected Work & Case Studies",
+  title: "Web Development Projects & Case Studies | Jamshed Khan",
   description:
     "Explore selected web development projects by Jamshed Khan, including React, Next.js, WordPress, Shopify, e-commerce, API integrations, and custom software solutions.",
   alternates: {
     canonical: "/work",
   },
   openGraph: {
-    title: "Selected Work & Case Studies | Jamshed Khan",
+    title: "Web Development Projects & Case Studies | Jamshed Khan",
     description:
       "Explore selected web development projects by Jamshed Khan, including React, Next.js, WordPress, Shopify, e-commerce, API integrations, and custom software solutions.",
     url: "/work",
+    images: [
+      {
+        url: "/og-image.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Jamshed Khan | Web Development Projects & Case Studies",
+      },
+    ],
   },
   twitter: {
-    title: "Selected Work & Case Studies | Jamshed Khan",
+    card: "summary_large_image",
+    title: "Web Development Projects & Case Studies | Jamshed Khan",
     description:
       "Explore selected web development projects by Jamshed Khan, including React, Next.js, WordPress, Shopify, e-commerce, API integrations, and custom software solutions.",
+    images: ["/og-image.jpeg"],
   },
 };
 
@@ -33,7 +43,7 @@ export default function WorkListingPage() {
         </span>
 
         <h1 className="text-4xl md:text-7xl font-black uppercase text-foreground">
-          SELECTED WORK
+          WEB DEVELOPMENT <span className="text-primary">PROJECTS.</span>
         </h1>
       </div>
 

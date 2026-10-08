@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 interface ArticleDetail {
   id: string;
@@ -22,7 +23,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "wp-vs-nextjs-switch",
     category: "NEXT.JS",
     title: "WordPress vs Custom Next.js: When Should a Business Switch?",
-    date: "JUL 2026",
+    date: "2026-07-15",
     readTime: "7 MIN READ",
     tags: ["Architecture", "Next.js", "WordPress", "Migration Strategy"],
     summary:
@@ -55,7 +56,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "canonical-errors-fix",
     category: "TECHNICAL SEO",
     title: "Fixing Canonical Errors & Redirect Loops Across Large Websites",
-    date: "JUN 2026",
+    date: "2026-06-15",
     readTime: "5 MIN READ",
     tags: ["Ahrefs", "301 Redirects", "Canonical Rules", "Server Directives"],
     summary:
@@ -80,7 +81,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "pagespeed-90-plus-wordpress",
     category: "PERFORMANCE",
     title: "Taking a WordPress Website from Poor Performance to 90+ PageSpeed",
-    date: "MAY 2026",
+    date: "2026-05-15",
     readTime: "6 MIN READ",
     tags: ["Core Web Vitals", "LCP / CLS", "SpeedyCache", "Asset Deferral"],
     summary:
@@ -105,7 +106,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "dynamic-jewelry-configurator",
     category: "E-COMMERCE / SYSTEMS",
     title: "Building a Dynamic Product Configuration System with WooCommerce APIs",
-    date: "APR 2026",
+    date: "2026-04-15",
     readTime: "8 MIN READ",
     tags: ["WooCommerce API", "React", "State Management", "E-Commerce"],
     summary:
@@ -126,7 +127,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "nextjs-app-router-patterns",
     category: "NEXT.JS",
     title: "Next.js App Router Performance Patterns & SSR Strategies",
-    date: "MAR 2026",
+    date: "2026-03-15",
     readTime: "6 MIN READ",
     tags: ["Next.js App Router", "SSR", "Vercel", "Bundle Size"],
     summary:
@@ -147,7 +148,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "mobile-slider-performance",
     category: "MOTION UI",
     title: "Optimizing Mobile Motion & Heavy Sliders Without Layout Shifts",
-    date: "FEB 2026",
+    date: "2026-02-15",
     readTime: "4 MIN READ",
     tags: ["GSAP", "Mobile UI", "Touch Viewports", "Layout Shift"],
     summary:
@@ -168,7 +169,7 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
     id: "international-seo-structure",
     category: "WORDPRESS / CMS",
     title: "Structuring Technical SEO & Content Models for International Websites",
-    date: "JAN 2026",
+    date: "2026-01-15",
     readTime: "5 MIN READ",
     tags: ["Custom Post Types", "Schema Markup", "B2B Systems", "Metadata"],
     summary:
@@ -186,6 +187,12 @@ const ARTICLES_DATABASE: Record<string, ArticleDetail> = {
   },
 };
 
+export function generateStaticParams() {
+  return Object.keys(ARTICLES_DATABASE).map((id) => ({
+    id,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -195,10 +202,7 @@ export async function generateMetadata({
   const article = ARTICLES_DATABASE[id];
 
   if (!article) {
-    return {
-      title: "Insight Not Found",
-      description: "The requested technical insight could not be found.",
-    };
+    notFound();
   }
 
   return {
@@ -212,10 +216,20 @@ export async function generateMetadata({
       description: article.summary,
       url: `/insights/${id}`,
       type: "article",
+      images: [
+        {
+          url: "/og-image.jpeg",
+          width: 1200,
+          height: 630,
+          alt: `${article.title} | Jamshed Khan`,
+        },
+      ],
     },
     twitter: {
+      card: "summary_large_image",
       title: `${article.title} | Jamshed Khan`,
       description: article.summary,
+      images: ["/og-image.jpeg"],
     },
   };
 }
@@ -231,8 +245,40 @@ export default async function ArticleDetailPage({
   if (!article) {
     notFound();
   }
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.summary,
+    image: ["https://jamshedportfolio.vercel.app/og-image.jpeg"],
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Person",
+      name: "Jamshed Khan",
+      url: "https://jamshedportfolio.vercel.app/about",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Jamshed Khan",
+      url: "https://jamshedportfolio.vercel.app",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://jamshedportfolio.vercel.app/insights/${article.id}`,
+    },
+    url: `https://jamshedportfolio.vercel.app/insights/${article.id}`,
+    keywords: article.tags.join(", "),
+  };
 
   return (
+    <>
+    <Script
+      id={`article-schema-${article.id}`}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(articleSchema),
+      }}
+    />  
     <div className="min-h-screen bg-background text-foreground pt-28 pb-20 w-full">
       {/* NAVIGATION BACK BUTTON */}
       <div className="w-full px-6 md:px-12 lg:px-16 pt-8 pb-4">
@@ -321,5 +367,6 @@ export default async function ArticleDetailPage({
         </div>
       </section>
     </div>
+    </>
   );
 }

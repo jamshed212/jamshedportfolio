@@ -73,6 +73,14 @@ export const metadata: Metadata = {
     title: "Jamshed Khan | Full Stack Developer",
     description:
       "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, API integrations, SaaS solutions, and AI automation.",
+    images: [
+      {
+        url: "/og-image.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Jamshed Khan | Full Stack Developer",
+      },
+    ],
   },
 
   twitter: {
@@ -80,6 +88,7 @@ export const metadata: Metadata = {
     title: "Jamshed Khan | Full Stack Developer",
     description:
       "Full Stack Developer specializing in React, Next.js, WordPress, Shopify, APIs, SaaS & AI automation.",
+    images: ["/og-image.jpeg"],
   },
 };
 

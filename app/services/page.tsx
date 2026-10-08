@@ -140,7 +140,7 @@ export default function ServicesPage() {
             CAPABILITIES & SYSTEMS ENGINEERING
           </span>
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tight uppercase leading-[0.9] text-foreground">
-            ENGINEERING <span className="text-primary">SERVICES.</span>
+            WEB DEVELOPMENT <span className="text-primary">SERVICES.</span>
           </h1>
           <p className="text-muted text-sm md:text-base max-w-2xl leading-relaxed pt-2">
             Technical solutions built around business objectives. Every system is engineered to solve operational bottlenecks, speed up performance, and convert visitors into clients.

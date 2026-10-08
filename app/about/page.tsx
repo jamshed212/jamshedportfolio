@@ -2,13 +2,34 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Jamshed Khan | Full Stack Developer",
-  description:
-    "Learn about Jamshed Khan, a Full Stack Developer specializing in Next.js, React, WordPress, Shopify, API integrations, technical SEO, performance, and modern web applications.",
-  alternates: {
-    canonical: "/about",
-  },
-};
+    title: "About Jamshed Khan | Full Stack Developer",
+    description:
+      "Learn about Jamshed Khan, a Full Stack Developer specializing in Next.js, React, WordPress, Shopify, API integrations, technical SEO, performance, and modern web applications.",
+    alternates: {
+      canonical: "/about",
+    },
+    openGraph: {
+      title: "About Jamshed Khan | Full Stack Developer",
+      description:
+        "Learn about Jamshed Khan, a Full Stack Developer specializing in Next.js, React, WordPress, Shopify, API integrations, technical SEO, performance, and modern web applications.",
+      url: "/about",
+      images: [
+        {
+          url: "/og-image.jpeg",
+          width: 1200,
+          height: 630,
+          alt: "About Jamshed Khan | Full Stack Developer",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "About Jamshed Khan | Full Stack Developer",
+      description:
+        "Learn about Jamshed Khan, a Full Stack Developer specializing in Next.js, React, WordPress, Shopify, API integrations, technical SEO, and performance.",
+      images: ["/og-image.jpeg"],
+    },
+  };
 
 interface StatItem {
   label: string;

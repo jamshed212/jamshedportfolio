@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { PROJECTS_DATA } from "@/data/projects";
+
+export function generateStaticParams() {
+  return Object.keys(PROJECTS_DATA).map((slug) => ({
+    slug,
+  }));
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -21,20 +28,30 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} Case Study`,
-    description: project.overview,
+    title: `${project.title} | Web Development Case Study | Jamshed Khan`,
+    description: project.seoDescription,
     alternates: {
       canonical: `/work/${slug}`,
     },
     openGraph: {
       title: `${project.title} Case Study | Jamshed Khan`,
-      description: project.overview,
+      description: project.seoDescription,
       url: `/work/${slug}`,
       type: "article",
+      images: [
+        {
+          url: "/og-image.jpeg",
+          width: 1200,
+          height: 630,
+          alt: `${project.title} | Jamshed Khan`,
+        },
+      ],
     },
     twitter: {
+      card: "summary_large_image",
       title: `${project.title} Case Study | Jamshed Khan`,
-      description: project.overview,
+      description: project.seoDescription,
+      images: ["/og-image.jpeg"],
     },
   };
 }
@@ -49,6 +66,26 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-background text-foreground pt-32 pb-20 px-6 md:px-12 lg:px-16 w-full">
+      <Script
+        id={`project-schema-${project.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: `${project.title} Case Study`,
+            description: project.seoDescription,
+            url: `https://jamshedportfolio.vercel.app/work/${project.slug}`,
+            creator: {
+              "@type": "Person",
+              name: "Jamshed Khan",
+              url: "https://jamshedportfolio.vercel.app",
+            },
+            about: project.category,
+            keywords: project.techStack.join(", "),
+          }),
+        }}
+      />
       <Link
         href="/work"
         className="text-accent text-xs font-mono tracking-widest hover:underline mb-8 inline-block uppercase"
@@ -144,7 +181,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
             <div className="space-y-3">
               <span className="text-muted text-xs block uppercase">
-                VERIFIED METRICS & RESULTS:
+                PROJECT METRICS & RESULTS:
               </span>
 
               <div className="flex flex-wrap gap-2">
@@ -175,6 +212,45 @@ export default async function CaseStudyPage({ params }: Props) {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border pt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div>
+            <span className="text-accent text-xs tracking-widest uppercase font-mono font-bold">
+              // START A PROJECT
+            </span>
+
+            <p className="text-muted text-sm mt-2">
+              Have a similar project in mind? Let&apos;s discuss your requirements.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${project.title} live website`}
+                className="border border-border px-5 py-3 text-xs font-mono font-bold tracking-widest uppercase hover:border-accent hover:text-accent transition"
+              >
+                VIEW LIVE PROJECT →
+              </a>
+            )}
+            <Link
+              href="/build"
+              className="bg-accent text-background px-5 py-3 text-xs font-mono font-bold tracking-widest uppercase hover:opacity-90 transition"
+            >
+              BUILD WITH ME →
+            </Link>
+
+            <Link
+              href="/contact"
+              className="border border-border px-5 py-3 text-xs font-mono font-bold tracking-widest uppercase hover:border-accent hover:text-accent transition"
+            >
+              CONTACT →
+            </Link>
           </div>
         </div>
       </div>

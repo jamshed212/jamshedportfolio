@@ -6,6 +6,7 @@ export interface Project {
   client: string;
   timeline: string;
   overview: string;
+  seoDescription: string;
   problem: string;
   solution: string;
   architectureHighlights: string[];
@@ -26,6 +27,8 @@ export const PROJECTS_DATA: Record<string, Project> = {
     timeline: "3 Weeks",
     overview:
       "Full-service creative digital agency combining design, technology, and strategy to build, grow, and transform online brand identities.",
+    seoDescription:
+      "A modern digital agency website built with React, Vite, Tailwind CSS, and Framer Motion, focused on performance, technical SEO, service discovery, and lead generation.",
     problem:
       "Legacy web presence suffered from high mobile drop-off, slow interactive loads, and unoptimized service showcases.",
     solution:
@@ -53,7 +56,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "Portcity Traders",
     timeline: "2 Weeks",
     overview:
-      "Global import and export platform specializing strictly in agro commodities and industrial raw materials.",
+    "Global import/export platform specializing in agro commodities and industrial raw materials.",
+    seoDescription:
+      "A professional WordPress website for an import and export business, designed to showcase agricultural commodities, industrial raw materials, product information, and B2B inquiries.",
     problem:
       "Absence of an organized, modern digital showcase resulted in reliance on manual PDF brochures during B2B international inquiries.",
     solution:
@@ -81,7 +86,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "Bathia Ocean Gold (BOG)",
     timeline: "3 Weeks",
     overview:
-      "International corporate portal for Bathia Ocean Gold, dealing in gold, silver, copper, agro-mining commodities, and minerals.",
+      "Corporate platform for gold, silver, copper, agro-mining commodities, and minerals.",
+    seoDescription:
+      "A Next.js and React corporate website for BOG International, showcasing gold, silver, copper, minerals, agro-mining products, and international business inquiries.",
     problem:
       "Outdated catalog presentation causing slow response times for international investor inquiries and heavy media layout shifts.",
     solution:
@@ -109,7 +116,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "24Seven Group",
     timeline: "3 Weeks",
     overview:
-      "Enterprise group portal delivering 24/7 corporate services, facility solutions, and multi-sector operational support.",
+      "Enterprise group portal representing 24/7 services, facilities, and multi-sector business operations.",
+    seoDescription:
+      "A professional WordPress corporate website for 24Seven Group, designed to present its multi-sector business services, improve mobile usability, and provide a clear digital experience for clients and inquiries.",
     problem:
       "Multi-division business operations were fragmented across old web properties, confusing corporate clients.",
     solution:
@@ -137,7 +146,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "OHS Centric (Australia)",
     timeline: "4 Weeks",
     overview:
-      "Australian occupational health & safety compliance portal providing businesses with structured risk management solutions.",
+      "Australian OHS compliance portal for workplace health and safety professionals.",
+    seoDescription:
+      "An AI powered workplace health and safety platform built for Australian WHS professionals, providing cited answers from verified legislation, compliance resources, document tools, and jurisdiction-specific safety guidance.",
     problem:
       "Complex safety compliance guidelines required an intuitive digital system to convert visitors into consultation leads.",
     solution:
@@ -165,7 +176,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "Ghazi Rental Power",
     timeline: "2 Weeks",
     overview:
-      "Industrial rental portal supplying heavy generator power, industrial machinery, and temporary power grid solutions.",
+      "Industrial power and equipment rental portal for generators, machinery, and temporary power solutions.",
+    seoDescription:
+      "A professional WordPress website for Ghazi Rental Power, showcasing diesel generator rentals, generator sales, air compressor services, transportation, and industrial power solutions across Pakistan.",
     problem:
       "Clients required immediate equipment specs and emergency power booking, which was difficult on their previous website.",
     solution:
@@ -193,7 +206,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "Dr. Saeed Practice",
     timeline: "2 Weeks",
     overview:
-      "Healthcare portal providing patient consultation booking, medical insights, and clinic service overviews.",
+      "Healthcare portal for consultation booking, medical services, and clinical information.",
+    seoDescription:
+      "A modern healthcare website built with Next.js and React, designed to help patients explore medical specialties, find clinic information, and request appointments through a fast, accessible digital experience.",
     problem:
       "Patients faced friction when scheduling clinic consultations and searching for medical department information.",
     solution:
@@ -221,7 +236,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "Taibah Reservations",
     timeline: "4 Weeks",
     overview:
-      "Hospitality booking platform specializing in Umrah packages, hotel reservations in Makkah & Madinah, and travel logistics.",
+      "Travel and hospitality booking platform for Umrah packages, hotels in Makkah and Madinah, and travel logistics.",
+    seoDescription:
+      "A fast travel and hotel reservation website built for Umrah packages, Makkah and Madinah hotels, and travel consultations, with searchable listings and a mobile-focused booking experience.",
     problem:
       "High bounce rates during seasonal Umrah rushes due to slow package listings and complex pricing variations.",
     solution:
@@ -249,7 +266,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "CourtX",
     timeline: "3 Weeks",
     overview:
-      "Premier sports venue and court reservation showcase, offering luxury club amenities and booking information.",
+      "Luxury sports venue and court reservation showcase for a modern sports club.",
+    seoDescription:
+      "A modern sports club website built with Next.js, Tailwind CSS, and Framer Motion, designed to showcase sports courts, memberships, events, and venue experiences with a fast mobile-first interface.",
     problem:
       "Needed a high-end visual platform matching the luxury brand identity while maintaining fast mobile rendering.",
     solution:
@@ -277,7 +296,9 @@ export const PROJECTS_DATA: Record<string, Project> = {
     client: "Inventor Pharma",
     timeline: "3 Weeks",
     overview:
-      "Corporate pharmaceutical platform detailing medicine production, regulatory compliance, and healthcare distribution.",
+      "Pharmaceutical manufacturing platform covering medicine production, regulatory compliance, and distribution.",
+    seoDescription:
+      "A professional WordPress website for a pharmaceutical manufacturing company, showcasing medicine products, manufacturing capabilities, regulatory standards, compliance information, and distributor inquiries.",
     problem:
       "Strict healthcare regulatory standards required a structured product catalog with certified documentation.",
     solution:
