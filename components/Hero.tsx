@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 export default function Hero() {
-  const words = ["DIGITAL", "IMPACT.", "RESULTS."];
+  const words = ["WEBSITES.", "WEB APPS.", "SOLUTIONS."];
   const wordRef = useRef<HTMLSpanElement>(null);
   const indexRef = useRef(0);
 
@@ -36,7 +36,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full px-6 md:px-12 pt-32 pb-24">
+      <div className="relative z-10 w-full min-w-0 px-4 sm:px-6 md:px-12 pt-32 pb-24">
 
         {/* Status Badge */}
         <div className="flex items-center gap-2 mb-10">
@@ -49,7 +49,7 @@ export default function Hero() {
         {/* Heading */}
         <div className="mb-8">
           <h1 className="text-[clamp(3.5rem,11vw,10rem)] font-black leading-[0.9] tracking-tighter uppercase">
-            <span className="text-foreground block">CREATING</span>
+            <span className="text-foreground block">BUILDING</span>
             <span
               ref={wordRef}
               className="block"
@@ -69,22 +69,23 @@ export default function Hero() {
 
         {/* Subheading */}
         <p className="text-muted text-base md:text-lg max-w-lg mb-10 leading-relaxed">
-          Senior Web Developer crafting high-performance websites for{" "}
-          <span className="text-foreground font-medium">UK & Middle East</span>{" "}
-          clients. React, Next.js, WordPress & SEO.
+          Full Stack Developer building fast, scalable websites and web applications
+          for businesses across the{" "}
+          <span className="text-foreground font-medium">US, UK & Pakistan.</span>{" "}
+          Specializing in React, Next.js, WordPress, Shopify, API integrations, and AI automation.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center gap-4 mb-20">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-20">
           <Link
-            href="/contact"
-            className="bg-primary hover:bg-primary-hover text-white text-xs px-7 py-3.5 tracking-widest uppercase transition-colors duration-200 font-medium"
+            href="/build"
+            className="w-full sm:w-auto text-center bg-primary hover:bg-primary-hover text-white text-xs px-5 sm:px-7 py-3.5 tracking-widest uppercase transition-colors duration-200 font-medium"
           >
-            Build Brief
+            START A PROJECT →
           </Link>
           <Link
             href="/work"
-            className="border border-border-light hover:border-primary text-muted hover:text-foreground text-xs px-7 py-3.5 tracking-widest uppercase transition-all duration-200"
+            className="w-full sm:w-auto text-center border border-border-light hover:border-primary text-muted hover:text-foreground text-xs px-5 sm:px-7 py-3.5 tracking-widest uppercase transition-all duration-200"
           >
             View Work
           </Link>
@@ -93,9 +94,9 @@ export default function Hero() {
         {/* Stats */}
         <div className="flex flex-wrap gap-12 md:gap-16">
           {[
-            { number: "6+", label: "Years Experience" },
-            { number: "30+", label: "Projects Delivered" },
-            { number: "3", label: "Markets Served" },
+            { number: "US · UK · PK", label: "CLIENT MARKETS" },
+            { number: "WEB", label: "DEVELOPMENT & E-COMMERCE" },
+            { number: "API", label: "INTEGRATIONS & AUTOMATION" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col gap-1">
               <span className="text-4xl md:text-5xl font-black text-foreground leading-none">
@@ -118,9 +119,7 @@ export default function Hero() {
           <span className="text-muted/50 text-[10px] tracking-widest uppercase">
             STATUS: <span className="text-accent">ACTIVE</span>
           </span>
-          <span className="text-muted/50 text-[10px] tracking-widest uppercase hidden md:block">
-            EST. 2018
-          </span>
+          
         </div>
       </div>
 

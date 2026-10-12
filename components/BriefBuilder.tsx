@@ -12,56 +12,56 @@ interface Option {
 const STEP_1_OPTIONS: Option[] = [
   {
     id: "nextjs",
-    title: "CUSTOM NEXT.JS / REACT WEB APP",
-    desc: "High speed, SSR, modern dynamic architecture",
+    title: "CUSTOM WEBSITE OR WEB APP",
+    desc: "Modern React / Next.js development for custom business websites and web applications",
   },
   {
     id: "wordpress",
-    title: "WORDPRESS & CMS BUILD",
-    desc: "Custom themes, Elementor, WooCommerce",
+    title: "WORDPRESS OR E-COMMERCE WEBSITE",
+    desc: "WordPress, WooCommerce, Shopify, custom themes, and business websites",
   },
   {
     id: "seo",
-    title: "PERFORMANCE SEO & AUDIT",
-    desc: "Core Web Vitals, PageSpeed 90+, canonical fixes",
+    title: "SEO & PERFORMANCE IMPROVEMENT",
+    desc: "Technical SEO, Core Web Vitals, speed optimization, and website audits",
   },
   {
     id: "ui_motion",
-    title: "UI/UX & MOTION REDESIGN",
-    desc: "Framer Motion, GSAP, interactive visual polish",
+    title: "WEBSITE REDESIGN & UI/UX",
+    desc: "Modern responsive interfaces, visual improvements, animations, and user experience",
   },
 ];
 
 const STEP_2_OPTIONS: Option[] = [
   {
     id: "api_integration",
-    title: "CUSTOM API & DATABASE INTEGRATION",
-    desc: "REST / GraphQL endpoints, dynamic state management",
+    title: "API & THIRD-PARTY INTEGRATIONS",
+    desc: "Connect your website or application with external services, platforms, or business systems",
   },
   {
     id: "ecom_setup",
-    title: "WOOCOMMERCE / SHOPIFY API",
-    desc: "Custom checkout flow, product configurator, payment gateways",
+    title: "E-COMMERCE & ONLINE PAYMENTS",
+    desc: "Products, shopping carts, checkout, payment gateways, and custom e-commerce functionality",
   },
   {
     id: "speed_opt",
-    title: "ADVANCED PERFORMANCE OPTIMIZATION",
-    desc: "Asset minification, caching setup, image pipeline",
+    title: "WEBSITE SPEED & PERFORMANCE",
+    desc: "Improve loading speed, Core Web Vitals, mobile performance, and overall website efficiency",
   },
   {
     id: "seo_remediation",
-    title: "TECHNICAL SEO AUDIT & REDIRECTS",
-    desc: "Ahrefs audit cleanup, schema setup, indexing fixes",
+    title: "TECHNICAL SEO & SEARCH VISIBILITY",
+    desc: "Fix crawlability, indexing, redirects, structured data, and other technical SEO issues",
   },
 ];
 
-const TIMELINE_OPTIONS = ["ASAP (1-2 WEEKS)", "STANDARD (3-4 WEEKS)", "FLEXIBLE"];
+const TIMELINE_OPTIONS = ["AS SOON AS POSSIBLE","WITHIN 3–4 WEEKS","FLEXIBLE / NO FIXED DATE",];
 
 export default function BriefBuilder() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedProjectType, setSelectedProjectType] = useState<string>("nextjs");
+  const [selectedProjectType, setSelectedProjectType] = useState<string>("");
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [selectedTimeline, setSelectedTimeline] = useState<string>("STANDARD (3-4 WEEKS)");
+  const [selectedTimeline, setSelectedTimeline] = useState<string>("WITHIN 3–4 WEEKS");
   const [clientInfo, setClientInfo] = useState({ name: "", email: "", notes: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,15 +73,21 @@ export default function BriefBuilder() {
   };
 
   const handleNext = () => {
-    if (currentStep < 4) setCurrentStep((prev) => prev + 1);
+    if (currentStep === 1 && !selectedProjectType) {
+      alert("Please select what you are looking to build.");
+      return;
+    }
+
+    if (currentStep < 4) {
+      setCurrentStep((prev) => prev + 1);
+    }
   };
 
   const handleBack = () => {
     if (currentStep > 1) setCurrentStep((prev) => prev - 1);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {e.preventDefault();
 
   try {
     setIsSubmitting(true);
@@ -107,9 +113,7 @@ export default function BriefBuilder() {
         : "None selected"
     }
 
-    Additional Notes:
-    ${clientInfo.notes || "None"}
-        `.trim();
+    Additional Notes:${clientInfo.notes || "None"}`.trim();
 
         const response = await fetch("/api/contact", {
           method: "POST",
@@ -150,9 +154,9 @@ export default function BriefBuilder() {
         <div className="text-xs font-mono font-bold tracking-widest text-slate-400">
           <span className="text-cyan-400">STEP 0{currentStep} / 04</span> —{" "}
           {currentStep === 1 && "PROJECT TYPE"}
-          {currentStep === 2 && "REQUIRED SCOPE"}
-          {currentStep === 3 && "TIMELINE & GOALS"}
-          {currentStep === 4 && "FINAL EVALUATION"}
+          {currentStep === 2 && "YOUR NEEDS"}
+          {currentStep === 3 && "TIMELINE"}
+          {currentStep === 4 && "CONTACT DETAILS"}
         </div>
 
         {/* Progress Bar Indicator */}
@@ -181,10 +185,10 @@ export default function BriefBuilder() {
         >
           <div className="text-cyan-400 text-5xl font-black">✓</div>
           <h2 className="text-3xl font-black uppercase tracking-tight text-white">
-            PROJECT BRIEF EVALUATION SENT
+            PROJECT DETAILS SENT
           </h2>
           <p className="text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
-            Aap ka brief capture ho gaya hai. Technical scope evaluate karke 24 hours ke andar response forward kar diya jayega.
+            Thanks — your project details have been sent. I’ll review your requirements and get back to you with the next steps.
           </p>
           <button
             onClick={() => {
@@ -193,7 +197,7 @@ export default function BriefBuilder() {
             }}
             className="text-xs font-bold tracking-[0.2em] uppercase text-cyan-400 underline hover:text-cyan-300 pt-4 inline-block"
           >
-            START NEW CONFIGURATION
+            SUBMIT ANOTHER PROJECT
           </button>
         </motion.div>
       ) : (
@@ -252,8 +256,12 @@ export default function BriefBuilder() {
               className="space-y-8"
             >
               <h2 className="text-2xl md:text-3xl font-black uppercase tracking-wide text-white">
-                SELECT SCOPE & TECHNICAL REQUIREMENTS
+                WHAT DO YOU NEED?
               </h2>
+
+              <p className="mt-3 text-sm text-slate-400">
+                Select all that apply. You can choose more than one option.
+              </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {STEP_2_OPTIONS.map((opt) => {
@@ -300,8 +308,11 @@ export default function BriefBuilder() {
               className="space-y-8"
             >
               <h2 className="text-2xl md:text-3xl font-black uppercase tracking-wide text-white">
-                TARGET TIMELINE & EXECUTION SCHEDULE
+                WHEN WOULD YOU LIKE TO START?
               </h2>
+              <p className="mt-3 text-sm text-slate-400">
+                Choose the timeframe that best fits your project.
+              </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {TIMELINE_OPTIONS.map((time) => {
@@ -338,7 +349,7 @@ export default function BriefBuilder() {
               className="space-y-8"
             >
               <h2 className="text-2xl md:text-3xl font-black uppercase tracking-wide text-white">
-                RECEIVE DIRECT EVALUATION
+                SEND PROJECT DETAILS →
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -349,7 +360,8 @@ export default function BriefBuilder() {
                     </label>
                     <input
                       type="text"
-                      required
+                      required 
+                      autoComplete="name"
                       value={clientInfo.name}
                       onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
                       placeholder="John Doe"
@@ -363,7 +375,8 @@ export default function BriefBuilder() {
                     </label>
                     <input
                       type="email"
-                      required
+                      required 
+                      autoComplete="email"
                       value={clientInfo.email}
                       onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
                       placeholder="john@company.com"
@@ -380,7 +393,7 @@ export default function BriefBuilder() {
                     rows={3}
                     value={clientInfo.notes}
                     onChange={(e) => setClientInfo({ ...clientInfo, notes: e.target.value })}
-                    placeholder="Specific design preferences, site reference link, or custom features..."
+                    placeholder="Tell me about your goals, current website, key features, or anything else I should know..."
                     className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors resize-none"
                   ></textarea>
                 </div>
@@ -390,8 +403,11 @@ export default function BriefBuilder() {
                   disabled={isSubmitting}
                   className="w-full bg-cyan-400 hover:bg-cyan-300 text-black font-bold text-xs py-4 tracking-[0.2em] uppercase transition-all duration-200 shadow-lg shadow-cyan-400/20"
                 >
-                  {isSubmitting ? "SENDING BRIEF..." : "SUBMIT BRIEF FOR EVALUATION →"}
+                  {isSubmitting ? "SENDING DETAILS..." : "SEND PROJECT DETAILS →"}
                 </button>
+                <p className="mt-3 text-center text-[11px] font-mono tracking-wide text-slate-500">
+                  Your details are only used to review your project requirements and contact you about the project.
+                </p>
               </form>
             </motion.div>
           )}

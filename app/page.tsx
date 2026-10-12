@@ -44,42 +44,42 @@ const STATS = [
     desc: "Web Apps, Platforms & High-Speed Sites",
   },
   {
-    number: "95+",
-    label: "PERFORMANCE TARGET",
-    desc: "Core Web Vitals & Technical Speed Audits",
+    number: "30+",
+    label: "PROJECTS DELIVERED",
+    desc: "Web Apps, Platforms & High Speed Sites",
   },
 ];
 
 const TRUST_BADGES = [
-  "⚡ SUB-1 SECOND LOAD SPEED GUARANTEE",
-  "🛡️ 30-DAY FREE POST-LAUNCH WARRANTY",
-  "🔒 FIXED PRICE SCOPE — NO HIDDEN BILLING",
+  "⚡ PERFORMANCE-FOCUSED DEVELOPMENT",
+  "🛡️ POST-LAUNCH SUPPORT",
+  "🔒 CLEAR PROJECT SCOPE",
 ];
 
 const SERVICES = [
   {
     code: "01",
     title: "CUSTOM WEB APPLICATIONS",
-    desc: "Architecting high-speed Next.js and React applications with dynamic API integrations, server-side rendering, and scalable frontend state management.",
-    outcome: "Delivering sub-second load times and seamless user flows.",
+    desc: "Building fast, scalable web applications with Next.js and React, connected to the APIs, databases, and third-party services your business needs.",
+    outcome: "A faster, more reliable web application built around your business requirements.",
   },
   {
     code: "02",
     title: "WORDPRESS ENGINEERING",
-    desc: "Building lightweight custom themes, headless setups, and WooCommerce configurations without heavy plugin dependencies or code bloat.",
-    outcome: "Ensuring top-tier maintainability and rapid page performance.",
+    desc: "Building fast, maintainable WordPress and WooCommerce websites with custom themes, clean integrations, and carefully selected plugins.",
+    outcome: "A faster WordPress site that is easier to manage, maintain, and grow.",
   },
   {
     code: "03",
     title: "PERFORMANCE & TECHNICAL SEO",
-    desc: "Resolving Core Web Vitals bottlenecks, indexation issues, 301 redirect chains, and DOM inflation to maximize technical search compliance.",
-    outcome: "Driving higher search rankings and fast mobile load speeds.",
+    desc: "Improving website speed, Core Web Vitals, crawlability, indexation, redirects, and technical SEO issues that can affect search visibility and user experience.",
+    outcome: "A technically healthier website built for better performance, crawlability, and search visibility.",
   },
   {
     code: "04",
     title: "UI/UX & MOTION ENGINEERING",
-    desc: "Implementing fluid Framer Motion and GSAP micro-interactions, responsive sliders, and dynamic interfaces engineered for all device profiles.",
-    outcome: "Creating high-engagement visual touchpoints without performance penalty.",
+    desc: "Creating responsive, polished interfaces with thoughtful animations, interactions, and layouts that work smoothly across desktop, tablet, and mobile.",
+    outcome: "A modern user experience that looks premium without sacrificing usability or performance.",
   },
 ];
 
@@ -106,66 +106,69 @@ const FEATURED_PROJECTS = [
 
 const COMPARISON_ROWS = [
   {
-    feature: "Page Load Velocity",
-    builder: "3.5s – 6.0s (High Mobile Drop-off)",
-    custom: "⚡ < 0.8s (Edge Cached Performance)",
+    feature: "Page Load Performance",
+    builder: "Often affected by heavy themes, plugins & scripts",
+    custom: "Performance-focused architecture & optimized assets",
   },
   {
-    feature: "Google Lighthouse Target",
-    builder: "30–50 / 100 Mobile Score",
-    custom: "🟢 95–100 / 100 Score Guaranteed",
+    feature: "Lighthouse Performance",
+    builder: "Limited by theme, plugins & page-builder overhead",
+    custom: "Built with performance targets for each project",
   },
   {
     feature: "Code Maintainability",
-    builder: "Heavy Plugin Bloat & Vulnerabilities",
-    custom: "🔒 Enterprise-Grade Clean Code",
+    builder: "More dependencies & third-party plugin overhead",
+    custom: "Cleaner, project-specific code & integrations",
   },
   {
     feature: "Business Scalability",
-    builder: "Locked into Template Limits",
-    custom: "⚡ 100% Custom API & UI Control",
+    builder: "Can become restrictive as requirements grow",
+    custom: "Flexible architecture with custom APIs & UI",
   },
 ];
 
 const PROCESS_STEPS = [
   {
     step: "01",
-    title: "INTERACTIVE DISCOVERY",
-    desc: "Configure your project scope and technical parameters in 3 minutes.",
+    title: "DISCOVERY & SCOPE",
+    desc: "We clarify your goals, requirements, technical needs, and project scope before development begins.",
   },
   {
     step: "02",
     title: "PROPOSAL & ARCHITECTURE",
-    desc: "Receive a detailed technical roadmap, fixed quote, and sprint schedule within 24 hours.",
+    desc: "You receive a clear project proposal covering the recommended approach, scope, timeline, and investment.",
   },
   {
     step: "03",
-    title: "AGILE DEVELOPMENT",
-    desc: "Track real-time progress on a private live staging URL with weekly milestone demos.",
+    title: "DEVELOPMENT & REVIEW",
+    desc: "I build the project in stages, sharing progress for review and keeping the implementation aligned with the agreed scope.",
   },
   {
     step: "04",
     title: "LAUNCH & SUPPORT",
-    desc: "Production deployment, Core Web Vitals audit, Loom walkthrough, and 30-day warranty.",
+    desc: "After testing and final review, I handle deployment and provide post-launch support based on the agreed project terms.",
   },
 ];
 
 const SKILL_COLUMNS = [
   {
-    title: "FRONTEND ARCHITECTURE",
-    skills: ["React / Next.js", "JavaScript (ES6+)", "Tailwind CSS", "TypeScript", "Dynamic State"],
+    title: "FRONTEND DEVELOPMENT",
+    skills: ["React / Next.js", "JavaScript (ES6+)", "TypeScript", "Tailwind CSS", "Responsive UI"],
   },
+
   {
-    title: "CMS ENGINEERING",
-    skills: ["Custom WordPress Themes", "WooCommerce API", "Elementor Pro", "Headless CMS", "Schema Markup"],
+    title: "CMS & E-COMMERCE",
+    skills: ["WordPress", "WooCommerce", "Elementor", "Shopify", "Custom Integrations"],
   },
+
+  {
+    title: "APIs & BACKEND",
+    skills: ["REST APIs", "Third-Party Integrations", "API Data Sync", "Server-Side Logic", "Database Integration"],
+  },
+
   {
     title: "PERFORMANCE & SEO",
-    skills: ["Core Web Vitals", "PageSpeed 95+ Target", "Ahrefs Technical Audits", "301 Redirect Rules", "Asset Minification"],
-  },
-  {
-    title: "WORKFLOW & DEPLOYMENT",
-    skills: ["Git & GitHub", "Vercel Deployment", "REST / GraphQL APIs", "n8n Automations", "Mobile Optimization"],
+    skills: ["Core Web Vitals", "Technical SEO", "PageSpeed Optimization", "Schema Markup", "Mobile Optimization"],
   },
 ];
 
@@ -182,12 +185,14 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight uppercase leading-[0.9] text-foreground">
-            CREATING<br />
-            <span className="text-primary">RESULTS.</span>
+            FULL STACK<br />
+            <span className="text-primary">DEVELOPER.</span>
           </h1>
 
           <p className="text-muted text-base md:text-xl font-normal max-w-3xl leading-relaxed pt-2">
-            I build high-performance digital experiences and systems for international businesses—specializing in custom Next.js applications, custom WordPress engineering, and technical SEO performance.
+            I build fast, scalable websites and web applications for businesses that need
+            better performance, stronger user experiences, and reliable integrations.
+            Specializing in Next.js, React, WordPress, Shopify, APIs, and technical SEO.
           </p>
 
           {/* Objection-Buster Trust Badges */}
@@ -207,13 +212,13 @@ export default function HomePage() {
               href="/build"
               className="bg-primary hover:bg-primary-hover text-white font-bold text-xs md:text-sm px-8 py-4 tracking-[0.2em] uppercase transition-all duration-200 shadow-lg shadow-primary/20"
             >
-              MAKE BUILD
+              START A PROJECT →
             </Link>
             <Link
               href="/work"
               className="border border-border hover:border-foreground text-foreground font-bold text-xs md:text-sm px-8 py-4 tracking-[0.2em] uppercase transition-colors duration-200 bg-surface"
             >
-              VIEW WORK
+              VIEW MY WORK →
             </Link>
           </div>
         </div>
@@ -315,9 +320,13 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="lg:col-span-4 flex lg:justify-end">
+              <div className="lg:col-span-4 flex flex-col lg:items-end lg:justify-center gap-3">
+                <span className="text-[10px] font-mono tracking-widest text-muted uppercase">
+                  PROJECT DETAILS
+                </span>
+
                 <Link
-                  href="/work"
+                  href={`/work/${proj.slug}`}
                   className="bg-primary hover:bg-primary-hover text-white text-xs font-bold px-8 py-4 tracking-[0.2em] uppercase transition-colors inline-block whitespace-nowrap"
                 >
                   VIEW CASE STUDY →
@@ -426,17 +435,17 @@ export default function HomePage() {
               TRACK RECORD
             </span>
             <h3 className="text-2xl md:text-4xl font-black uppercase text-foreground tracking-tight">
-              4+ YEARS OF PRODUCTION ENGINEERING
+              FULL STACK DEVELOPMENT EXPERIENCE
             </h3>
             <p className="text-muted text-sm leading-relaxed">
-              Delivering full-stack web solutions, custom plugin architectures, and technical SEO optimizations for digital products and corporate platforms.
+              Building and improving web applications, business websites, e-commerce platforms, API integrations, and technical SEO systems across modern web technologies.
             </p>
           </div>
           <Link
             href="/about"
             className="border border-border hover:border-foreground text-foreground font-bold text-xs px-8 py-4 tracking-[0.2em] uppercase transition-colors whitespace-nowrap"
           >
-            READ FULL BIOGRAPHY →
+            VIEW MY EXPERIENCE →
           </Link>
         </div>
       </section>
@@ -474,20 +483,20 @@ export default function HomePage() {
       <section className="w-full px-6 md:px-12 lg:px-16 py-20">
         <div className="bg-primary/10 border border-primary/40 rounded-sm p-10 md:p-20 text-center space-y-6">
           <span className="text-accent text-xs tracking-[0.3em] uppercase font-bold block font-mono">
-            STRUCTURED PROJECT SCOPING
+            LET'S WORK TOGETHER
           </span>
           <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tight text-white">
-            GOT A PROJECT?
+            HAVE A PROJECT IN MIND?
           </h2>
           <p className="text-slate-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Translate your technical requirements into an actionable scope. Configure your project parameters step-by-step to receive a direct engineering evaluation.
+            Tell me what you’re building, what you need help with, and where you want to take it. I’ll review your requirements and we can discuss the right approach for your project.
           </p>
           <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
             <Link
               href="/build"
               className="bg-primary hover:bg-primary-hover text-white font-bold text-xs md:text-sm px-8 py-4 tracking-[0.2em] uppercase transition-all duration-200 shadow-xl shadow-primary/30"
             >
-              MAKE BUILD →
+              START A PROJECT →
             </Link>
             <Link
               href="/process"
@@ -502,9 +511,12 @@ export default function HomePage() {
       {/* 11. DIRECT CONTACT FOOTNOTE */}
       <section className="w-full px-6 md:px-12 lg:px-16 pb-16 text-center border-t border-border/40 pt-12">
         <p className="text-muted text-xs uppercase tracking-widest">
-          Prefer direct communication?{" "}
-          <Link href="/contact" className="text-accent underline font-bold hover:text-white transition-colors">
-            Contact Directly
+          Prefer to talk first?{" "}
+          <Link
+            href="/contact"
+            className="text-accent underline font-bold hover:text-white transition-colors"
+          >
+            Get in Touch →
           </Link>
         </p>
       </section>

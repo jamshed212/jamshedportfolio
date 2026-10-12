@@ -28,16 +28,16 @@ export default function BuildPage() {
         {/* Header */}
         <div className="mb-12">
           <span className="text-cyan-400 text-xs tracking-[0.3em] uppercase font-bold mb-3 block">
-            INTERACTIVE CONFIGURATOR
+            START YOUR PROJECT
           </span>
 
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-4">
-            BUILD YOUR BRIEF
+            TELL ME ABOUT YOUR PROJECT
           </h1>
 
           <p className="text-slate-400 text-sm md:text-base max-w-2xl leading-relaxed">
-            Select your requirements step-by-step to calculate scope, technical
-            requirements, and receive a direct project evaluation.
+            Tell me what you’re building, what you need, and what you’re aiming to achieve. 
+            Answer a few questions to outline your project and provide the details needed for the next conversation.
           </p>
         </div>
 
