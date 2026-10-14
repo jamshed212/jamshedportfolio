@@ -271,7 +271,7 @@ export default function InsightsPage() {
             NEED TECHNICAL DIRECTION?
           </h2>
           <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Have a complex technical requirement, performance bottleneck, or platform migration to scope? Let's discuss the underlying architecture.
+            Have a complex technical requirement, performance bottleneck, or platform migration to scope? Let&apos;s discuss the underlying architecture.
           </p>
           <div className="pt-2 flex justify-center">
             <Link

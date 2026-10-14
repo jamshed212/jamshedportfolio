@@ -30,7 +30,7 @@ const NAV_ITEMS: NavItem[] = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
+  const closeMenu = () => setIsOpen(false);
   // Lock body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
@@ -53,11 +53,6 @@ export default function Navigation() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
-
-  // Close menu automatically on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
 
   return (
     <>
@@ -138,7 +133,7 @@ export default function Navigation() {
                     </span>
                     <Link
                       href={item.href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={closeMenu}
                       className={`text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight transition-colors ${
                         isActive
                           ? "text-primary"
@@ -156,7 +151,7 @@ export default function Navigation() {
                         <Link
                           key={sub.label}
                           href={sub.href}
-                          onClick={() => setIsOpen(false)}
+                          onClick={closeMenu}
                           className="text-xs font-mono text-muted hover:text-primary uppercase tracking-widest transition-colors flex items-center gap-1.5"
                         >
                           <span className="text-accent">↳</span> {sub.label}

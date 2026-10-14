@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ProjectDiscoveryState, ProjectType, UserRoleType } from '@/types/discovery';
+import { ProjectDiscoveryState, ProjectType } from '@/types/discovery';
 import { LiveBlueprintPanel } from './LiveBlueprintPanel';
 import { TechnicalTranslation } from './TechnicalTranslation';
 import { SubmissionStatus } from './SubmissionStatus';
@@ -141,10 +141,12 @@ export const ProjectDiscoveryEngine: React.FC = () => {
           {/* STEP 00: INTRO */}
           {state.step === 0 && (
             <div className="space-y-6">
-              <span className="text-xs font-mono text-cyan-400 tracking-widest block uppercase">// PROJECT INTELLIGENCE</span>
+              <span className="text-xs font-mono text-cyan-400 tracking-widest block uppercase">
+                {"// PROJECT INTELLIGENCE"}
+                </span>
               <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight">ENGINEER YOUR PROJECT.</h1>
               <p className="text-sm sm:text-base text-white/70 leading-relaxed max-w-2xl">
-                Tell us what you're trying to build. We'll translate your goals into a structured digital blueprint covering scope, functionality, technical direction, timeline and investment.
+                Tell us what you&apos;re trying to build. We&apos;ll translate your goals into a structured digital blueprint covering scope, functionality, technical direction, timeline and investment.
               </p>
               
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 font-mono text-xs text-white/50 pt-4 border-t border-white/10">
@@ -177,9 +179,13 @@ export const ProjectDiscoveryEngine: React.FC = () => {
           {state.step === 1 && (
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// STEP 01: BUSINESS GOALS</span>
+                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+                  {"// STEP 01: BUSINESS GOALS"}
+                </span>
                 <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-1">WHAT ARE YOU TRYING TO ACHIEVE?</h2>
-                <p className="text-xs font-mono text-white/50 mt-1">"Start with the outcome. Technology comes later."</p>
+                <p className="text-xs font-mono text-white/50 mt-1">
+                  &quot;Start with the outcome. Technology comes later.&quot;
+                </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -227,7 +233,9 @@ export const ProjectDiscoveryEngine: React.FC = () => {
           {state.step === 2 && (
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// STEP 02: PRODUCT CLASS</span>
+                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+                  {"// STEP 02: PRODUCT CLASS"}
+                </span>
                 <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-1">WHAT ARE WE ENGINEERING?</h2>
               </div>
 
@@ -267,7 +275,9 @@ export const ProjectDiscoveryEngine: React.FC = () => {
             <div className="space-y-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// STEP 04: CAPABILITIES</span>
+                  <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+                    {"// STEP 04: CAPABILITIES"}
+                  </span>
                   <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-1">WHAT SHOULD IT ACTUALLY DO?</h2>
                 </div>
                 <span className="font-mono text-xs text-cyan-400 bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 rounded">
@@ -315,7 +325,9 @@ export const ProjectDiscoveryEngine: React.FC = () => {
           {state.step === 13 && (
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// STEP 13: BLUEPRINT CONFIRMATION</span>
+                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+                  {"// STEP 13: BLUEPRINT CONFIRMATION"}
+                </span>
                 <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight mt-1">REVIEW YOUR PROJECT BLUEPRINT.</h2>
               </div>
 

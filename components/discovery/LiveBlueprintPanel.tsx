@@ -22,7 +22,9 @@ export const LiveBlueprintPanel: React.FC<LiveBlueprintPanelProps> = ({ state, o
   const Content = (
     <div className="space-y-6 font-mono text-xs">
       <div className="flex items-center justify-between border-b border-white/10 pb-3">
-        <span className="text-cyan-400 font-bold tracking-widest uppercase">// LIVE_BLUEPRINT</span>
+        <span className="text-cyan-400 font-bold tracking-widest uppercase">
+          {"// LIVE_BLUEPRINT"}
+          </span>
         <span className="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded">
           REV-2026
         </span>
@@ -118,7 +120,9 @@ export const LiveBlueprintPanel: React.FC<LiveBlueprintPanelProps> = ({ state, o
         <div className="lg:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col justify-end">
           <div className="bg-[#0a0e17] border-t border-white/15 p-6 rounded-t-2xl max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <span className="text-xs font-mono text-cyan-400 font-bold uppercase">// BLUEPRINT SUMMARY</span>
+              <span className="text-xs font-mono text-cyan-400 font-bold uppercase">
+                {"// BLUEPRINT SUMMARY"}
+                </span>
               <button 
                 onClick={() => setIsMobileOpen(false)}
                 className="text-white/50 text-sm font-mono"

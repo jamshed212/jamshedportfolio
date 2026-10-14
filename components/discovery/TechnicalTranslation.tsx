@@ -11,12 +11,14 @@ export const TechnicalTranslation: React.FC<{ state: ProjectDiscoveryState }> = 
   return (
     <div className="space-y-6">
       <div>
-        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// STEP 09: TECHNICAL ARCHITECTURE</span>
+        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+          {"// STEP 09: TECHNICAL ARCHITECTURE"}
+        </span>
         <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mt-1">
           Requirement to Stack Translation
         </h2>
         <p className="text-xs font-mono text-white/50 mt-1">
-          "Your requirements define the problem. Final architecture is validated during technical discovery."
+          &quot;Your requirements define the problem. Final architecture is validated during technical discovery.&quot;
         </p>
       </div>
 

@@ -113,7 +113,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="bg-surface border border-border p-6 md:p-12 rounded-sm space-y-10 font-mono text-sm w-full">
           <div className="space-y-2 border-b border-border/40 pb-6">
             <span className="text-accent text-xs tracking-widest uppercase font-bold block">
-              // 01. EXECUTIVE OVERVIEW
+              {"// 01. EXECUTIVE OVERVIEW"}
             </span>
             <p className="text-foreground text-base md:text-lg leading-relaxed font-sans">
               {project.overview}
@@ -143,7 +143,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-border/40 pb-8">
             <div className="space-y-4">
               <span className="text-accent text-xs tracking-widest uppercase font-bold block">
-                // 02. TECHNICAL HIGHLIGHTS
+                {"// 02. TECHNICAL HIGHLIGHTS"}
               </span>
 
               <ul className="space-y-2">
@@ -161,7 +161,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
             <div className="space-y-4">
               <span className="text-accent text-xs tracking-widest uppercase font-bold block">
-                // 03. KEY FEATURES DELIVERED
+                {"// 03. KEY FEATURES DELIVERED"}
               </span>
 
               <ul className="space-y-2">
@@ -218,7 +218,7 @@ export default async function CaseStudyPage({ params }: Props) {
         <div className="border-t border-border pt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
           <div>
             <span className="text-accent text-xs tracking-widest uppercase font-mono font-bold">
-              // START A PROJECT
+              {"// START A PROJECT"}
             </span>
 
             <p className="text-muted text-sm mt-2">

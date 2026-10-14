@@ -25,7 +25,7 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
       {/* Header */}
       <div>
         <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
-          // FINAL REVIEW & CONFIRMATION
+          {"// FINAL REVIEW & CONFIRMATION"}
         </span>
         <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mt-1">
           Review Your Project Blueprint
@@ -40,7 +40,9 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
         {/* Section 1: Business Scope & Objective */}
         <div className="bg-white/[0.02] border border-white/10 p-5 rounded-xl relative group">
           <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-mono text-cyan-400 uppercase">// 01. Objective & Type</span>
+            <span className="text-xs font-mono text-cyan-400 uppercase">
+              {"// 01. Objective & Type"}
+            </span>
             <button
               onClick={() => onEditStep(1)}
               className="text-[10px] text-white/50 hover:text-white underline font-mono"
@@ -73,7 +75,9 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
         {/* Section 2: Selected Features & Stack */}
         <div className="bg-white/[0.02] border border-white/10 p-5 rounded-xl relative group">
           <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-mono text-cyan-400 uppercase">// 02. Features ({state.selectedFeatures.length})</span>
+            <span className="text-xs font-mono text-cyan-400 uppercase">
+              {"// 02. Features (" + state.selectedFeatures.length + ")"}
+            </span>
             <button
               onClick={() => onEditStep(5)}
               className="text-[10px] text-white/50 hover:text-white underline font-mono"
@@ -100,7 +104,9 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
         {/* Section 3: Timeline, Budget & Complexity */}
         <div className="bg-white/[0.02] border border-white/10 p-5 rounded-xl relative group">
           <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-mono text-cyan-400 uppercase">// 03. Estimates</span>
+            <span className="text-xs font-mono text-cyan-400 uppercase">
+              {"// 03. Estimates"}
+            </span>
             <button
               onClick={() => onEditStep(11)}
               className="text-[10px] text-white/50 hover:text-white underline font-mono"
@@ -131,7 +137,9 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
         {/* Section 4: Contact & Communication */}
         <div className="bg-white/[0.02] border border-white/10 p-5 rounded-xl relative group">
           <div className="flex justify-between items-center mb-3">
-            <span className="text-xs font-mono text-cyan-400 uppercase">// 04. Client Contact</span>
+            <span className="text-xs font-mono text-cyan-400 uppercase">
+              {"// 04. Client Contact"}
+            </span>
             <button
               onClick={() => onEditStep(13)}
               className="text-[10px] text-white/50 hover:text-white underline font-mono"
@@ -151,7 +159,9 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
       {/* Additional Notes Box */}
       {state.contact.additionalNotes && (
         <div className="bg-white/[0.02] border border-white/10 p-4 rounded-xl text-xs font-mono">
-          <span className="text-white/40 block mb-1 uppercase">// Notes:</span>
+          <span className="text-white/40 block mb-1 uppercase">
+            {"// Notes:"}
+          </span>
           <p className="text-white/80">{state.contact.additionalNotes}</p>
         </div>
       )}
@@ -159,7 +169,7 @@ export const BlueprintSummary: React.FC<BlueprintSummaryProps> = ({
       {/* Action CTA Button */}
       <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs font-mono text-white/50">
-          "Submit" click karte hi blueprint aapke email par send ho jayegi.
+          &quot;Submit&quot; click karte hi blueprint aapke email par send ho jayegi.
         </p>
         <button
           onClick={onSubmit}

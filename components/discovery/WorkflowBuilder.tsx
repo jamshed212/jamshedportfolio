@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 const AVAILABLE_ACTIONS = [
   "VISIT", "SIGN UP", "LOGIN", "SEARCH", "FILTER",
   "BOOK", "BUY", "PAY", "APPROVE", "REJECT",

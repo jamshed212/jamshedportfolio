@@ -483,7 +483,7 @@ export default function HomePage() {
       <section className="w-full px-6 md:px-12 lg:px-16 py-20">
         <div className="bg-primary/10 border border-primary/40 rounded-sm p-10 md:p-20 text-center space-y-6">
           <span className="text-accent text-xs tracking-[0.3em] uppercase font-bold block font-mono">
-            LET'S WORK TOGETHER
+            LET&apos;S WORK TOGETHER
           </span>
           <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tight text-white">
             HAVE A PROJECT IN MIND?

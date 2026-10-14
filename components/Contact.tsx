@@ -24,7 +24,7 @@ export default function Contact() {
             GET IN TOUCH
           </span>
           <h2 className="text-white text-4xl md:text-5xl font-black tracking-tighter uppercase">
-            LET'S WORK
+            LET&apos;S WORK
           </h2>
         </div>
 

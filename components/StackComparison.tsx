@@ -6,7 +6,9 @@ export const StackComparison: React.FC = () => {
   return (
     <section className="py-20 px-4 max-w-5xl mx-auto text-white">
       <div className="text-center mb-12">
-        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// WHY MODERN TECH MATTERS</span>
+        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+          {"// WHY MODERN TECH MATTERS"}
+        </span>
         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2">
           Generic Builders vs My Custom Architecture
         </h2>

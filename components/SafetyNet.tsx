@@ -7,7 +7,9 @@ export const SafetyNet: React.FC = () => {
     <section className="py-20 px-4 max-w-5xl mx-auto text-white">
       <div className="bg-gradient-to-r from-cyan-950/40 via-black to-cyan-950/40 border border-cyan-500/30 p-8 md:p-12 rounded-3xl relative overflow-hidden">
         <div className="text-center mb-10">
-          <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// PEACE OF MIND GUARANTEE</span>
+          <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+            {"// PEACE OF MIND GUARANTEE"}
+          </span>
           <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight mt-1">
             Zero-Risk Post-Launch Support
           </h2>

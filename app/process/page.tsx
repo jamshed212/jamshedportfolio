@@ -44,7 +44,10 @@ export default function ProcessPage() {
     notes: ""
   });
 
-  const updateData = (key: keyof ProjectData, value: any) => {
+  const updateData = <K extends keyof ProjectData>(
+    key: K,
+    value: ProjectData[K]
+  ) => {
     setData((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -84,7 +87,7 @@ export default function ProcessPage() {
           FROM IDEA TO <span className="text-primary">BRIEF.</span>
         </h1>
         <p className="text-muted text-sm md:text-base max-w-lg leading-relaxed">
-          Tell us what you're trying to build, what it needs to do, and what success looks like. We'll turn your requirements into the right technical solution.
+          Tell us what you&apos;re trying to build, what it needs to do, and what success looks like. We&apos;ll turn your requirements into the right technical solution.
         </p>
       </section>
 
@@ -99,7 +102,7 @@ export default function ProcessPage() {
       {step === 1 && (
         <StepContainer title="WHAT ARE WE BUILDING?">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Object.keys(REQUIREMENTS_MAP).map((type) => (
+            {(Object.keys(REQUIREMENTS_MAP) as ProjectType[]).map((type) => (
               <OptionCard 
                 key={type} 
                 selected={data.type === type} 

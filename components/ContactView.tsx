@@ -98,7 +98,7 @@ export default function ContactView() {
               MESSAGE SENT
             </h3>
             <p className="text-slate-400 text-sm max-w-md mx-auto">
-              Thank you for reaching out. I'll review your details and get back to you within 24 hours.
+              Thank you for reaching out. I&apos;ll review your details and get back to you within 24 hours.
             </p>
             <button
               onClick={() => setStatus("idle")}

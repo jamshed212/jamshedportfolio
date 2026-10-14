@@ -6,7 +6,9 @@ export const PricingTiers: React.FC<{ onOpenDiscovery: () => void }> = ({ onOpen
   return (
     <section className="py-20 px-4 max-w-6xl mx-auto text-white">
       <div className="text-center mb-12">
-        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">// TRANSPARENT INVESTMENT</span>
+        <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest">
+          {"// TRANSPARENT INVESTMENT"}
+        </span>
         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2">
           Predictable Pricing, Zero Hidden Fees
         </h2>
@@ -19,7 +21,9 @@ export const PricingTiers: React.FC<{ onOpenDiscovery: () => void }> = ({ onOpen
         {/* Tier 1 */}
         <div className="bg-white/[0.02] border border-white/10 p-6 rounded-2xl flex flex-col justify-between">
           <div>
-            <span className="text-xs font-mono text-white/50 uppercase block">// STARTER</span>
+            <span className="text-xs font-mono text-white/50 uppercase block">
+              {"// STARTER"}
+            </span>
             <h3 className="text-2xl font-black uppercase tracking-tight mt-1">High-Impact Landing Page</h3>
             <div className="my-4">
               <span className="text-3xl font-black text-cyan-400">$800 – $1,500</span>
@@ -47,7 +51,9 @@ export const PricingTiers: React.FC<{ onOpenDiscovery: () => void }> = ({ onOpen
             MOST POPULAR
           </div>
           <div>
-            <span className="text-xs font-mono text-cyan-400 uppercase block">// FULL DIGITAL PLATFORM</span>
+            <span className="text-xs font-mono text-cyan-400 uppercase block">
+              {"// FULL DIGITAL PLATFORM"}
+            </span>
             <h3 className="text-2xl font-black uppercase tracking-tight mt-1">Web Application / E-Com</h3>
             <div className="my-4">
               <span className="text-3xl font-black text-cyan-400">$2,500 – $5,000</span>
@@ -73,7 +79,9 @@ export const PricingTiers: React.FC<{ onOpenDiscovery: () => void }> = ({ onOpen
         {/* Tier 3 */}
         <div className="bg-white/[0.02] border border-white/10 p-6 rounded-2xl flex flex-col justify-between">
           <div>
-            <span className="text-xs font-mono text-white/50 uppercase block">// ENTERPRISE</span>
+            <span className="text-xs font-mono text-white/50 uppercase block">
+              {"// ENTERPRISE"}
+            </span>
             <h3 className="text-2xl font-black uppercase tracking-tight mt-1">Custom Software & SaaS</h3>
             <div className="my-4">
               <span className="text-3xl font-black text-cyan-400">$5,000+</span>

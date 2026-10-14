@@ -11,7 +11,7 @@ export default function CTAStrip() {
             GOT A PROJECT?
           </h2>
           <p className="text-blue-100 text-sm md:text-base mt-3 font-medium">
-            Let's build something that stands out.
+            Let&apos;s build something that stands out.
           </p>
         </div>
 

@@ -12,7 +12,9 @@ export const SubmissionStatus: React.FC<{
     <div className="max-w-3xl mx-auto space-y-8 font-mono py-8">
       <div className="border border-cyan-500/30 bg-cyan-950/10 p-6 rounded-xl space-y-3">
         <div className="flex justify-between items-center">
-          <span className="text-xs text-cyan-400 font-bold tracking-widest">// DISCOVERY COMPLETE</span>
+          <span className="text-xs text-cyan-400 font-bold tracking-widest">
+            {"// DISCOVERY COMPLETE"}
+          </span>
           <span className="text-xs bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full">STATUS: IN REVIEW</span>
         </div>
         <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight">

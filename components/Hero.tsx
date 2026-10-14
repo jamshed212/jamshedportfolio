@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-
+const words = ["WEBSITES.", "WEB APPS.", "SOLUTIONS."] as const;
 export default function Hero() {
-  const words = ["WEBSITES.", "WEB APPS.", "SOLUTIONS."];
+  
   const wordRef = useRef<HTMLSpanElement>(null);
   const indexRef = useRef(0);
 
