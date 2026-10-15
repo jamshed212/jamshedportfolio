@@ -317,4 +317,36 @@ export const PROJECTS_DATA: Record<string, Project> = {
     techStack: ["WordPress", "Custom PHP", "Tailwind CSS"],
     liveUrl: "https://inventorpharma.pk/",
   },
+  "product-configurator": {
+slug: "product-configurator",
+title: "PRODUCT CONFIGURATOR",
+category: "INTERACTIVE PRODUCT CUSTOMIZATION PLATFORM",
+categorySlug: "web-apps",
+client: "Concept Project",
+timeline: "3 Weeks",
+overview:
+"An interactive product customization experience designed to let users explore product options, configure specifications, and preview their selections through a streamlined interface.",
+seoDescription:
+"An interactive product configurator case study exploring product customization, dynamic UI states, responsive design, and a streamlined user experience.",
+problem:
+"Traditional product pages can make it difficult for customers to understand available options and visualize different product configurations before making a decision.",
+solution:
+"Designed a modular product configuration experience with organized customization options, responsive layouts, and a clear path from product exploration to inquiry.",
+architectureHighlights: [
+"Component-based architecture for reusable configuration controls",
+"Dynamic UI states for product option selection",
+"Responsive rendering for desktop, tablet, and mobile devices",
+],
+keyFeatures: [
+"Interactive Product Customization Interface",
+"Dynamic Option Selection and Configuration Summary",
+"Responsive Product Preview Experience",
+],
+metrics: [
+"Responsive User Experience",
+"Reusable Component Architecture",
+],
+techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+},
+
 };
