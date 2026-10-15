@@ -318,35 +318,67 @@ export const PROJECTS_DATA: Record<string, Project> = {
     liveUrl: "https://inventorpharma.pk/",
   },
   "product-configurator": {
-slug: "product-configurator",
-title: "PRODUCT CONFIGURATOR",
-category: "INTERACTIVE PRODUCT CUSTOMIZATION PLATFORM",
-categorySlug: "web-apps",
-client: "Concept Project",
-timeline: "3 Weeks",
-overview:
-"An interactive product customization experience designed to let users explore product options, configure specifications, and preview their selections through a streamlined interface.",
-seoDescription:
-"An interactive product configurator case study exploring product customization, dynamic UI states, responsive design, and a streamlined user experience.",
-problem:
-"Traditional product pages can make it difficult for customers to understand available options and visualize different product configurations before making a decision.",
-solution:
-"Designed a modular product configuration experience with organized customization options, responsive layouts, and a clear path from product exploration to inquiry.",
-architectureHighlights: [
-"Component-based architecture for reusable configuration controls",
-"Dynamic UI states for product option selection",
-"Responsive rendering for desktop, tablet, and mobile devices",
-],
-keyFeatures: [
-"Interactive Product Customization Interface",
-"Dynamic Option Selection and Configuration Summary",
-"Responsive Product Preview Experience",
-],
-metrics: [
-"Responsive User Experience",
-"Reusable Component Architecture",
-],
-techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-},
+    slug: "product-configurator",
+    title: "PRODUCT CONFIGURATOR",
+    category: "INTERACTIVE PRODUCT CUSTOMIZATION PLATFORM",
+    categorySlug: "web-apps",
+    client: "Concept Project",
+    timeline: "3 Weeks",
+    overview:
+    "An interactive product customization experience designed to let users explore product options, configure specifications, and preview their selections through a streamlined interface.",
+    seoDescription:
+    "An interactive product configurator case study exploring product customization, dynamic UI states, responsive design, and a streamlined user experience.",
+    problem:
+    "Traditional product pages can make it difficult for customers to understand available options and visualize different product configurations before making a decision.",
+    solution:
+    "Designed a modular product configuration experience with organized customization options, responsive layouts, and a clear path from product exploration to inquiry.",
+    architectureHighlights: [
+    "Component-based architecture for reusable configuration controls",
+    "Dynamic UI states for product option selection",
+    "Responsive rendering for desktop, tablet, and mobile devices",
+    ],
+    keyFeatures: [
+    "Interactive Product Customization Interface",
+    "Dynamic Option Selection and Configuration Summary",
+    "Responsive Product Preview Experience",
+    ],
+    metrics: [
+    "Responsive User Experience",
+    "Reusable Component Architecture",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    },
+"agro-minerals-platform": {
+  slug: "agro-minerals-platform",
+  title: "AGRO MINERALS PLATFORM",
+  category: "AGRICULTURE & MINERALS BUSINESS PLATFORM",
+  categorySlug: "corporate",
+  client: "Concept Project",
+  timeline: "3 Weeks",
+  overview:
+  "A corporate web platform concept for an agriculture and minerals business, designed to present products, communicate company capabilities, and help potential customers explore business offerings.",
+  seoDescription:
+  "Explore an Agro Minerals Platform website concept focused on corporate presentation, product discovery, responsive design, and clear business communication.",
+  problem:
+  "Businesses in the agriculture and minerals sector need a clear digital presence to showcase their offerings, communicate expertise, and help prospective customers find relevant information.",
+  solution:
+  "Developed a corporate website concept with structured content, clear navigation, responsive layouts, and dedicated sections for business offerings and customer inquiries.",
+  architectureHighlights: [
+  "Reusable components for consistent corporate page layouts",
+  "Structured content sections for business offerings",
+  "Responsive layouts for desktop, tablet, and mobile devices",
+  ],
+  keyFeatures: [
+  "Corporate Business Presentation",
+  "Agriculture and Minerals Product Information",
+  "Responsive Navigation and Page Layouts",
+  "Customer Inquiry Call to Action",
+  ],
+  metrics: [
+  "Responsive User Experience",
+  "Reusable Component Structure",
+  ],
+  techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  },
 
 };
