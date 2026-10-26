@@ -1,12 +1,19 @@
 import OpenAI from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+    return Response.json(
+        { error: "AI brief generation is currently unavailable." },
+        { status: 503 }
+    );
+    }
+
+    const openai = new OpenAI({ apiKey });
 
     const {
       projectType,
